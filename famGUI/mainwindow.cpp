@@ -67,6 +67,8 @@ void MainWindow::displayListPersons(vector<cScientist> a)
     }
     ui->listOfScientist->setSortingEnabled(true);
     currentVectorP = a;
+
+
     QString label = "Row count: ";
     label = label + QString::number(ui->listOfScientist->rowCount());
     ui->rowCount_label->setText(label);
@@ -117,13 +119,17 @@ void MainWindow::displayListComputers(vector<Computer> a)
 
     }
     ui->listOfScientist->setSortingEnabled(true);
+
+    QString label = "Row count: ";
+    label = label + QString::number(ui->listOfScientist->rowCount());
+    ui->rowCount_label->setText(label);
 }
 
 void MainWindow::createTableComputers(const int &size)
 {
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_COMPUTER);
-    ui->listOfScientist->verticalHeader()->setVisible(false);
+    ui->listOfScientist->verticalHeader()->setVisible(true);
     ui->listOfScientist->setColumnWidth(2,50);
     ui->listOfScientist->setColumnWidth(3,150);
 
@@ -137,7 +143,7 @@ void MainWindow::switchLists()
     if(PC){
         startingList();
         ui->searchName->clear();
-        ui->searchName->setPlaceholderText("Filter by name... (more later)");
+        ui->searchName->setPlaceholderText("Filter by name,year or type...");
         ui->add->setText("Add computer");
         ui->edit->setText("Edit computer");
         ui->delete_2->setText("Delete computer");
