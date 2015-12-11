@@ -33,6 +33,8 @@ private slots:
 
     void on_edit_clicked();
 
+    void on_delete_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;
@@ -52,6 +54,8 @@ private:
     //Switch:
     void switchLists();
 
+    //Utilities:
+    int getIdFromSelected();
 
 };
 

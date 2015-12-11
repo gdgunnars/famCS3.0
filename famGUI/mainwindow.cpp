@@ -158,6 +158,18 @@ void MainWindow::switchLists()
     }
 }
 
+int MainWindow::getIdFromSelected(){
+    int row;
+    int column;
+    row = ui->listOfScientist->currentRow();
+    column = 0;
+    QTableWidgetItem* ite = ui->listOfScientist->item(row,column);
+    QString id = ite->text();
+
+    return id.toInt();
+}
+
+// Buttons ---------
 void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
 {
    QList<QTableWidgetItem*> sci = ui->listOfScientist->selectedItems();
@@ -211,14 +223,14 @@ void MainWindow::on_computerButton_clicked()
 
 void MainWindow::on_edit_clicked()
 {
-    QString a;
-    int row;
-    int column;
-    row = ui->listOfScientist->currentRow();
-    column = 0;
-    QTableWidgetItem* ite = ui->listOfScientist->item(row,column);
-    QString id = ite->text();
+    QString id = QString::number(getIdFromSelected());
     ui->test_output->setText(id);
+
+}
+
+
+void MainWindow::on_delete_2_clicked()
+{
 
 }
 
