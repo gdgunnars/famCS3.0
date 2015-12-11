@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/logos">
+        <file>Images/famCSStar.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>Images/famCSicon.png</file>
+    </qresource>
+</RCC>

@@ -32,8 +32,8 @@
    <string>famCS ©</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../Images/famCSicon.png</normaloff>../Images/famCSicon.png</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -113,20 +113,20 @@ color: rgb(145, 145, 145);</string>
           </item>
          </layout>
         </widget>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="logo">
          <property name="geometry">
           <rect>
-           <x>1</x>
+           <x>0</x>
            <y>10</y>
-           <width>160</width>
-           <height>46</height>
+           <width>161</width>
+           <height>51</height>
           </rect>
          </property>
          <property name="text">
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../Images/famCSStar.png</pixmap>
+          <pixmap resource="resources.qrc">:/logos/Images/famCSStar.png</pixmap>
          </property>
         </widget>
        </widget>
@@ -444,7 +444,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>569</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
@@ -458,23 +458,13 @@ font: 8pt &quot;Open Sans&quot;;</string>
     <property name="title">
      <string>List</string>
     </property>
-    <widget class="QMenu" name="menuScientist">
-     <property name="title">
-      <string>Scientist</string>
-     </property>
-     <addaction name="actionAdd_Scientist"/>
-     <addaction name="actionEdit_Scientist"/>
-     <addaction name="actionDelete_Scientist"/>
-    </widget>
     <widget class="QMenu" name="menuComputers">
      <property name="title">
-      <string>Computers</string>
+      <string>New</string>
      </property>
-     <addaction name="actionAdd_Computers"/>
-     <addaction name="actionEdit_Computer"/>
      <addaction name="actionDelete_Computer"/>
+     <addaction name="actionComputer"/>
     </widget>
-    <addaction name="menuScientist"/>
     <addaction name="menuComputers"/>
    </widget>
    <addaction name="menuList"/>
@@ -518,11 +508,18 @@ font: 8pt &quot;Open Sans&quot;;</string>
   </action>
   <action name="actionDelete_Computer">
    <property name="text">
-    <string>Delete Computer</string>
+    <string>Scientist</string>
+   </property>
+  </action>
+  <action name="actionComputer">
+   <property name="text">
+    <string>Computer</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
