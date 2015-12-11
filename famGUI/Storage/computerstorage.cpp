@@ -102,8 +102,11 @@ vector<Computer> computerStorage::sortByBuild(const bool& desc){
 vector<Computer> computerStorage::searchByName(string input){
     QSqlQuery query = QSqlQuery(runningDB);
 
-    query.prepare("SELECT * FROM Computers WHERE erased = 0 "
-                  "AND name LIKE '%'||:input||'%' ORDER BY name COLLATE NOCASE ASC;");
+    query.prepare("SELECT * FROM Computers WHERE (erased = 0) "
+                  "AND (name LIKE '%'||:input||'%'OR "
+                  "build_year LIKE '%'||:input||'%'OR "
+                  "type LIKE '%'||:input||'%') "
+                  "ORDER BY name COLLATE NOCASE ASC;");
     query.bindValue(":input",QString::fromStdString(input));
     vector<Computer> list = execute(query);
     return list;
