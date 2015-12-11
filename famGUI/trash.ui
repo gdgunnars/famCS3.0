@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,10 +29,10 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QListWidget" name="listWidget"/>
+    <widget class="QListWidget" name="person_listWidget"/>
    </item>
    <item row="1" column="2">
-    <widget class="QListWidget" name="listWidget_2"/>
+    <widget class="QListWidget" name="computer_listWidget"/>
    </item>
    <item row="2" column="0">
     <widget class="QPushButton" name="pushButton">
