@@ -68,6 +68,9 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
