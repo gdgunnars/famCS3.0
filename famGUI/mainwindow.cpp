@@ -230,6 +230,11 @@ void MainWindow::on_edit_clicked()
 
 void MainWindow::on_delete_2_clicked()
 {
+    int id = getIdFromSelected();
+    if(!PC)
+        personD.deletePerson(id);
+    else
+        computerD.deleteComputer(id);
 
 }
 
