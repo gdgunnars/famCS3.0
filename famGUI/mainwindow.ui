@@ -32,8 +32,8 @@
    <string>famCS ©</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../Images/famCSicon.png</normaloff>../Images/famCSicon.png</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -434,23 +434,13 @@ font: 8pt &quot;Open Sans&quot;;</string>
     <property name="title">
      <string>List</string>
     </property>
-    <widget class="QMenu" name="menuScientist">
-     <property name="title">
-      <string>Scientist</string>
-     </property>
-     <addaction name="actionAdd_Scientist"/>
-     <addaction name="actionEdit_Scientist"/>
-     <addaction name="actionDelete_Scientist"/>
-    </widget>
     <widget class="QMenu" name="menuComputers">
      <property name="title">
-      <string>Computers</string>
+      <string>New</string>
      </property>
-     <addaction name="actionAdd_Computers"/>
-     <addaction name="actionEdit_Computer"/>
      <addaction name="actionDelete_Computer"/>
+     <addaction name="actionComputer"/>
     </widget>
-    <addaction name="menuScientist"/>
     <addaction name="menuComputers"/>
    </widget>
    <addaction name="menuList"/>
@@ -494,7 +484,12 @@ font: 8pt &quot;Open Sans&quot;;</string>
   </action>
   <action name="actionDelete_Computer">
    <property name="text">
-    <string>Delete Computer</string>
+    <string>Scientist</string>
+   </property>
+  </action>
+  <action name="actionComputer">
+   <property name="text">
+    <string>Computer</string>
    </property>
   </action>
  </widget>
