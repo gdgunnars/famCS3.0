@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QModelIndex>
 #include "cscientist.h"
 #include "computer.h"
 #include "Domain/persondomain.h"
@@ -28,10 +29,16 @@ private slots:
 
     void on_computerButton_clicked();
 
+    void on_edit_clicked();
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;
     computerDomain computerD;
+    vector<cScientist> currentVectorP;
+    bool PC;
+
+    //Starting
     void startingList();
 
     //Display table
@@ -40,9 +47,10 @@ private:
     void displayListComputers(vector<Computer> a);
     void createTableComputers(const int& size);
 
+    //Switch:
     void switchLists();
 
-    bool PC;
+
 };
 
 #endif // MAINWINDOW_H

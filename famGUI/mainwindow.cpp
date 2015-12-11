@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QStringList>
 const int COLUMNS_PERSON = 5;
-const int COLUMNS_COMPUTER = 4;
+const int COLUMNS_COMPUTER = 5;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,6 +37,8 @@ void MainWindow::displayListPersons(vector<cScientist> a)
     vector<cScientist> list = a;
     createTablePersons(a.size());
 
+    ui->listOfScientist->clearContents();
+
     ui->listOfScientist->setSortingEnabled(false);
     for(unsigned int i = 0;i < a.size(); i++){
         cScientist current = list[i];
@@ -64,6 +66,7 @@ void MainWindow::displayListPersons(vector<cScientist> a)
 
     }
     ui->listOfScientist->setSortingEnabled(true);
+    currentVectorP = a;
 }
 void MainWindow::createTablePersons(const int& size)
 {
@@ -81,10 +84,12 @@ void MainWindow::displayListComputers(vector<Computer> a)
     vector<Computer> list = a;
     createTableComputers(a.size());
 
+    ui->listOfScientist->clearContents();
+
     ui->listOfScientist->setSortingEnabled(false);
     for(unsigned int i = 0;i < a.size(); i++){
         Computer current = list[i];
-        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(QString::number(current.getId())));
+        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(current.getId()));
         ui->listOfScientist->setItem(i,1, new QTableWidgetItem(QString::fromStdString(current.getName())));
         int year = current.getYear();
         QString yea;
@@ -187,5 +192,19 @@ void MainWindow::on_computerButton_clicked()
     else{
         PC = 1;
         switchLists();
+    }
+}
+
+void MainWindow::on_edit_clicked()
+{
+    int currentIndex;
+    QString a;
+    if(PC){
+
+    }
+    else{
+        currentIndex = ui->listOfScientist->currentRow();
+        a = QString::fromStdString(currentVectorP[currentIndex].getName());
+        ui->test_output->setText(a);
     }
 }
