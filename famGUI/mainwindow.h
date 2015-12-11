@@ -54,6 +54,8 @@ private:
     void createTablePersons(const int& size);
     void displayListComputers(vector<Computer> a);
     void createTableComputers(const int& size);
+    void moreInfo();
+    void connectedComputers();
 
     //Switch:
     void switchLists();

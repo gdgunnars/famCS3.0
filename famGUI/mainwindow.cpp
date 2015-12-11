@@ -140,12 +140,33 @@ void MainWindow::createTableComputers(const int &size)
     ui->listOfScientist->setHorizontalHeaderLabels(header);
 }
 
+void MainWindow::moreInfo()
+{
+    ui->infoList->clear();
+
+    int id = getIdFromSelected();
+    cScientist current = personD.getPerson(id);
+    ui->infoList->addItem("ID: " + QString::number(current.getId()));
+    ui->infoList->addItem(QString::fromStdString(current.getFact()));
+}
+
+void MainWindow::connectedComputers()
+{
+    int id = getIdFromSelected();
+    vector<Computer> list = personD.compsConnectedToPerson(id);
+
+    for(unsigned int i = 0; i < list.size();i++){
+        ui->compConList->addItem(QString::fromStdString(list[i].getName()));
+    }
+
+}
+
 void MainWindow::switchLists()
 {
     if(PC){
         startingList();
         ui->searchName->clear();
-        ui->searchName->setPlaceholderText("Filter by name,year or type...");
+        ui->searchName->setPlaceholderText("Filter by name, year or type...");
         ui->add->setText("Add computer");
         ui->edit->setText("Edit computer");
         ui->delete_2->setText("Delete computer");
@@ -174,7 +195,10 @@ int MainWindow::getIdFromSelected(){
 // Buttons ---------
 void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
 {
+    ui->compConList->clear();
     ui->edit->setEnabled(true);
+    moreInfo();
+    connectedComputers();
 }
 
 void MainWindow::on_searchName_textChanged(const QString &arg1)
@@ -242,8 +266,6 @@ void MainWindow::on_delete_2_clicked()
 
 
 }
-
-
 void MainWindow::on_trash_clicked()
 {
     Trash bin;
