@@ -33,3 +33,6 @@ HEADERS  += mainwindow.h \
     Storage/personstorage.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
