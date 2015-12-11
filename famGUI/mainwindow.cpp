@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     PC = 0;
+    ui->edit->setDisabled(true);
     ui->scientistButton->setChecked(!PC);
     ui->computerButton->setChecked(PC);
     startingList();
@@ -172,9 +173,7 @@ int MainWindow::getIdFromSelected(){
 // Buttons ---------
 void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
 {
-   QList<QTableWidgetItem*> sci = ui->listOfScientist->selectedItems();
-   QTableWidgetItem* s = sci[0];
- //   personD.editPerson(
+    ui->edit->setEnabled(true);
 }
 
 void MainWindow::on_searchName_textChanged(const QString &arg1)

@@ -35,6 +35,7 @@ private slots:
 
     void on_delete_2_clicked();
 
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;
