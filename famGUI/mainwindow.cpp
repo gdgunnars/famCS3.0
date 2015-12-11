@@ -67,13 +67,18 @@ void MainWindow::displayListPersons(vector<cScientist> a)
     }
     ui->listOfScientist->setSortingEnabled(true);
     currentVectorP = a;
+    QString label = "Row count: ";
+    label = label + QString::number(ui->listOfScientist->rowCount());
+    ui->rowCount_label->setText(label);
 }
 void MainWindow::createTablePersons(const int& size)
 {
 
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_PERSON);
-    ui->listOfScientist->verticalHeader()->setVisible(false);
+    ui->listOfScientist->setColumnWidth(1,200);
+    ui->listOfScientist->setColumnWidth(3,80);
+    ui->listOfScientist->verticalHeader()->setVisible(true);
     ui->listOfScientist->setColumnHidden(0,true);
     QStringList header;
     header << "ID" << "Name" << "Gender" << "Year of Birth" << "Year of Death";
@@ -90,7 +95,7 @@ void MainWindow::displayListComputers(vector<Computer> a)
     ui->listOfScientist->setSortingEnabled(false);
     for(unsigned int i = 0;i < a.size(); i++){
         Computer current = list[i];
-        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(qint32(current.getId())));
+        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(QString::number(current.getId())));
         ui->listOfScientist->setItem(i,1, new QTableWidgetItem(QString::fromStdString(current.getName())));
         int year = current.getYear();
         QString yea;
@@ -119,6 +124,8 @@ void MainWindow::createTableComputers(const int &size)
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_COMPUTER);
     ui->listOfScientist->verticalHeader()->setVisible(false);
+    ui->listOfScientist->setColumnWidth(2,50);
+    ui->listOfScientist->setColumnWidth(3,150);
 
     QStringList header;
     header << "ID" << "Name" << "Year" << "Type" << "Built or not";
@@ -201,11 +208,11 @@ void MainWindow::on_edit_clicked()
     QString a;
     int row;
     int column;
-        row = ui->listOfScientist->currentRow();
-        column = 0;
-        QTableWidgetItem* ite = ui->listOfScientist->item(row,column);
-        QString id = ite->text();
-        ui->test_output->setText(id);
+    row = ui->listOfScientist->currentRow();
+    column = 0;
+    QTableWidgetItem* ite = ui->listOfScientist->item(row,column);
+    QString id = ite->text();
+    ui->test_output->setText(id);
 
 }
 

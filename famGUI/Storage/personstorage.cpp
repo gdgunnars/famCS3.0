@@ -107,10 +107,10 @@ vector<cScientist>  personStorage::sortByYear(const bool& desc, const bool& bord
 vector<cScientist> personStorage::searchByName(string input){
 
     QSqlQuery query = QSqlQuery(runningDB);
-    query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                  "AND name LIKE '%'||:input||'%' OR "
+    query.prepare("SELECT * FROM Persons WHERE (erased = 0) "
+                  "AND (name LIKE '%'||:input||'%' OR "
                   "yob LIKE '%'||:input||'%'OR "
-                  "yod LIKE '%'||:input||'%'"
+                  "yod LIKE '%'||:input||'%')"
                   "ORDER BY name COLLATE NOCASE;");
     query.bindValue(":input",QString::fromStdString(input));
     vector<cScientist> list = execute(query);
