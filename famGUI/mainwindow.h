@@ -7,6 +7,7 @@
 #include <QStandardItem>
 #include "cscientist.h"
 #include "computer.h"
+#include "trash.h"
 #include "Domain/persondomain.h"
 #include "Domain/computerdomain.h"
 
@@ -35,6 +36,8 @@ private slots:
 
     void on_delete_2_clicked();
 
+
+    void on_trash_clicked();
 
 private:
     Ui::MainWindow *ui;

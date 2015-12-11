@@ -23,6 +23,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::startingList()
 {
+    ui->searchName->clear();
     if(PC){
         vector<Computer> list = computerD.sortByName(0);
         displayListComputers(list);
@@ -230,11 +231,24 @@ void MainWindow::on_edit_clicked()
 
 void MainWindow::on_delete_2_clicked()
 {
+
     int id = getIdFromSelected();
     if(!PC)
         personD.deletePerson(id);
     else
         computerD.deleteComputer(id);
 
+    ui->listOfScientist->removeRow(ui->listOfScientist->currentRow());
+
+
 }
 
+
+void MainWindow::on_trash_clicked()
+{
+    Trash bin;
+    bin.exec();
+    if(bin.close()){
+        startingList();
+    }
+}
