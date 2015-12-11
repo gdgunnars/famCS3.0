@@ -396,6 +396,9 @@ font: 8pt &quot;Open Sans&quot;;</string>
       </item>
       <item>
        <widget class="QPushButton" name="edit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(43, 43, 43);
 color: rgb(249, 249, 249);
@@ -468,7 +471,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>569</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
