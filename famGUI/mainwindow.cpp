@@ -70,10 +70,11 @@ void MainWindow::displayListPersons(vector<cScientist> a)
 }
 void MainWindow::createTablePersons(const int& size)
 {
+
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_PERSON);
     ui->listOfScientist->verticalHeader()->setVisible(false);
-
+    ui->listOfScientist->setColumnHidden(0,true);
     QStringList header;
     header << "ID" << "Name" << "Gender" << "Year of Birth" << "Year of Death";
     ui->listOfScientist->setHorizontalHeaderLabels(header);
@@ -89,7 +90,7 @@ void MainWindow::displayListComputers(vector<Computer> a)
     ui->listOfScientist->setSortingEnabled(false);
     for(unsigned int i = 0;i < a.size(); i++){
         Computer current = list[i];
-        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(current.getId()));
+        ui->listOfScientist->setItem(i,0, new QTableWidgetItem(qint32(current.getId())));
         ui->listOfScientist->setItem(i,1, new QTableWidgetItem(QString::fromStdString(current.getName())));
         int year = current.getYear();
         QString yea;
@@ -197,14 +198,14 @@ void MainWindow::on_computerButton_clicked()
 
 void MainWindow::on_edit_clicked()
 {
-    int currentIndex;
     QString a;
-    if(PC){
+    int row;
+    int column;
+        row = ui->listOfScientist->currentRow();
+        column = 0;
+        QTableWidgetItem* ite = ui->listOfScientist->item(row,column);
+        QString id = ite->text();
+        ui->test_output->setText(id);
 
-    }
-    else{
-        currentIndex = ui->listOfScientist->currentRow();
-        a = QString::fromStdString(currentVectorP[currentIndex].getName());
-        ui->test_output->setText(a);
-    }
 }
+

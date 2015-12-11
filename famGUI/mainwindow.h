@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QModelIndex>
+#include <QVariant>
+#include <QStandardItem>
 #include "cscientist.h"
 #include "computer.h"
 #include "Domain/persondomain.h"
