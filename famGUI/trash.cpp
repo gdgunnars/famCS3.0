@@ -36,3 +36,11 @@ void Trash::on_pushButton_clicked()
     personD.restoreFromBin(id);
     getErased();
 }
+
+void Trash::on_pushButton_2_clicked()
+{
+    int rowId = ui->computer_listWidget->currentRow();
+    int id = currentComputerVector[rowId].getId();
+    computerD.restoreFromBin(id);
+    getErased();
+}
