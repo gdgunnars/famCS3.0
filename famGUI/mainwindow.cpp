@@ -147,7 +147,7 @@ void MainWindow::moreInfo()
     int id = getIdFromSelected();
     cScientist current = personD.getPerson(id);
     ui->infoList->addItem("ID: " + QString::number(current.getId()));
-    ui->infoList->addItem(QString::fromStdString(current.getFact()));
+    ui->infoList->addItem("Fun fact: \n" + QString::fromStdString(current.getFact()));
 }
 
 void MainWindow::connectedComputers()
