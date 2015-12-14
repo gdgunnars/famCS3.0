@@ -8,6 +8,7 @@ edit::edit(const int& id,QWidget *parent) :
 {
     ui->setupUi(this);
     ui->deleteButton->setDisabled(1);
+    ui->addButton->setDisabled(1);
     getObject();
 }
 edit::~edit()
@@ -109,7 +110,8 @@ bool edit::yearError()
         return error;
     }
 
-    QString year = ui->lineYob->text();
+    QString yearBi = ui->lineYob->text();
+    QString yearDe = ui->lineYod->text();
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
@@ -126,7 +128,7 @@ bool edit::yearError()
     }
 
       if(!(ui->checkIfAlive->isChecked())){
-        if (year.isEmpty()){
+         if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
             yearB = currentPerson.getYearBirth();
             if ((yearD - yearB) < 0){
                 error = true;
@@ -241,13 +243,16 @@ void edit::changeFact()
 
 void edit::connections()
 {
-    vector<Computer> con = personD.compsConnectedToPerson(currentId);
+    ui->listConnected->clear();
+    ui->listNotConnected->clear();
+
+    con = personD.compsConnectedToPerson(currentId);
     for(unsigned int i = 0; i < con.size(); i++){
         ui->listConnected->addItem(QString::fromStdString(con[i].getName()));
     }
-    vector<Computer> notCon = personD.compsNotConnectedToPerson(currentId);
-    for(unsigned int i = 0; i < notCon.size(); i++){
-        ui->listNotConnected->addItem(QString::fromStdString(notCon[i].getName()));
+    notCon = personD.compsNotConnectedToPerson(currentId);
+    for(unsigned int j = 0; j < notCon.size(); j++){
+        ui->listNotConnected->addItem(QString::fromStdString(notCon[j].getName()));
     }
 }
 
@@ -269,4 +274,30 @@ void edit::on_updateButton_clicked()
 void edit::on_listConnected_clicked(const QModelIndex &index)
 {
     ui->deleteButton->setEnabled(1);
+    ui->addButton->setDisabled(1);
+}
+
+void edit::on_listNotConnected_clicked(const QModelIndex &index)
+{
+    ui->deleteButton->setDisabled(1);
+    ui->addButton->setEnabled(1);
+}
+
+void edit::on_deleteButton_clicked()
+{
+    int index = ui->listConnected->currentRow();
+    int id = con[index].getId();
+    ui->lineFact->setText(QString::number(id));
+
+    personD.deleteConnection(currentId,id);
+    connections();
+}
+
+void edit::on_addButton_clicked()
+{
+    int index = ui->listNotConnected->currentRow();
+    int id = notCon[index].getId();
+
+    personD.addConnection(currentId,id);
+    connections();
 }

@@ -26,6 +26,12 @@ private slots:
 
     void on_listConnected_clicked(const QModelIndex &index);
 
+    void on_listNotConnected_clicked(const QModelIndex &index);
+
+    void on_deleteButton_clicked();
+
+    void on_addButton_clicked();
+
 private:
     Ui::edit *ui;
     //Editing start
@@ -59,6 +65,8 @@ private:
 
     personDomain personD;
     cScientist currentPerson;
+    vector<Computer> con;
+    vector<Computer> notCon;
 
     int currentId;
     bool male;
