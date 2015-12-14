@@ -230,7 +230,10 @@ void edit::connections()
     for(unsigned int i = 0; i < con.size(); i++){
         ui->listConnected->addItem(QString::fromStdString(con[i].getName()));
     }
-
+    vector<Computer> notCon = personD.compsNotConnectedToPerson(currentId);
+    for(unsigned int i = 0; i < notCon.size(); i++){
+        ui->listNotConnected->addItem(QString::fromStdString(notCon[i].getName()));
+    }
 }
 
 void edit::quit()
