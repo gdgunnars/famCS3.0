@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QStringList>
+#include <QDesktopServices>
+#include <QUrl>
 const int COLUMNS_PERSON = 5;
 const int COLUMNS_COMPUTER = 5;
 
@@ -297,4 +299,10 @@ void MainWindow::on_trash_clicked()
     if(bin.close()){
         startingList();
     }
+}
+
+void MainWindow::on_actionGettingStarted_triggered()
+{
+    QString GetStarted = "https://github.com/gunnidg/famCS3.0/wiki";
+    QDesktopServices::openUrl(QUrl(GetStarted));
 }

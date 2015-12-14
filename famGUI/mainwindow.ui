@@ -533,38 +533,38 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuInfo">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Info</string>
+     <string>&amp;Help</string>
     </property>
-    <addaction name="actionHelp"/>
-    <addaction name="actionInfo"/>
+    <addaction name="actionGettingStarted"/>
+    <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuList">
     <property name="title">
-     <string>List</string>
+     <string>&amp;List</string>
     </property>
-    <widget class="QMenu" name="menuComputers">
+    <widget class="QMenu" name="menuNew">
      <property name="title">
-      <string>New</string>
+      <string>&amp;New</string>
      </property>
-     <addaction name="actionDelete_Computer"/>
-     <addaction name="actionComputer"/>
+     <addaction name="actionNewScientist"/>
+     <addaction name="actionNewComputer"/>
     </widget>
-    <addaction name="menuComputers"/>
+    <addaction name="menuNew"/>
    </widget>
    <addaction name="menuList"/>
-   <addaction name="menuInfo"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionHelp">
+  <action name="actionGettingStarted">
    <property name="text">
-    <string>Help</string>
+    <string>&amp;Getting Started</string>
    </property>
   </action>
-  <action name="actionInfo">
+  <action name="actionAbout">
    <property name="text">
-    <string>Info</string>
+    <string>&amp;About</string>
    </property>
   </action>
   <action name="actionAdd_Scientist">
@@ -592,12 +592,12 @@ font: 8pt &quot;Open Sans&quot;;</string>
     <string>Edit Computer</string>
    </property>
   </action>
-  <action name="actionDelete_Computer">
+  <action name="actionNewScientist">
    <property name="text">
     <string>Scientist</string>
    </property>
   </action>
-  <action name="actionComputer">
+  <action name="actionNewComputer">
    <property name="text">
     <string>Computer</string>
    </property>

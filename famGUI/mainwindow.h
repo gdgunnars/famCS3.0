@@ -39,6 +39,8 @@ private slots:
 
     void on_trash_clicked();
 
+    void on_actionGettingStarted_triggered();
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;
