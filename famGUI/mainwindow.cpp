@@ -35,49 +35,58 @@ void MainWindow::startingList()
 }
 void MainWindow::displayListPersons(vector<cScientist> a)
 {
-
     vector<cScientist> list = a;
+    QString gender;
+    QString yo;
+
     createTablePersons(a.size());
 
     ui->listOfScientist->clearContents();
-
     ui->listOfScientist->setSortingEnabled(false);
     for(unsigned int i = 0;i < a.size(); i++){
         cScientist current = list[i];
         ui->listOfScientist->setItem(i,0, new QTableWidgetItem(QString::number(current.getId())));
         ui->listOfScientist->setItem(i,1, new QTableWidgetItem(QString::fromStdString(current.getName())));
         char ge = current.getSex();
-        QString gender;
-        if(ge == 'M' || ge == 'm'){
-            gender = "Male";
-        }
-        else
-        {
-            gender = "Female";
-        }
+        gender = showGender(ge);
         ui->listOfScientist->setItem(i,2, new QTableWidgetItem(gender));
         ui->listOfScientist->setItem(i,3, new QTableWidgetItem(QString::number(current.getYearBirth())));
         int yod = current.getYearDeath();
-        if(yod == 0){
-            QString yo = "--";
-            ui->listOfScientist->setItem(i,4, new QTableWidgetItem(yo));
-        }
-        else{
-            ui->listOfScientist->setItem(i,4, new QTableWidgetItem(QString::number(yod)));
-        }
-
+        yo = showYear(yod);
+        ui->listOfScientist->setItem(i,4, new QTableWidgetItem(yo));
     }
     ui->listOfScientist->setSortingEnabled(true);
     currentVectorP = a;
-
 
     QString label = "Row count: ";
     label = label + QString::number(ui->listOfScientist->rowCount());
     ui->rowCount_label->setText(label);
 }
+
+QString MainWindow::showGender(char input){
+    QString gender;
+    if(input == 'M' || input == 'm'){
+        gender = "Male";
+    }
+    else{
+        gender = "Female";
+    }
+    return gender;
+}
+
+QString MainWindow::showYear(int input){
+    QString year;
+    if(input == 0){
+        year = "--";
+    }
+    else{
+        year = QString::number(input);
+    }
+    return year;
+}
+
 void MainWindow::createTablePersons(const int& size)
 {
-
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_PERSON);
     ui->listOfScientist->setColumnWidth(1,200);
@@ -92,39 +101,37 @@ void MainWindow::createTablePersons(const int& size)
 void MainWindow::displayListComputers(vector<Computer> a)
 {
     vector<Computer> list = a;
+    QString yea;
+
     createTableComputers(a.size());
 
     ui->listOfScientist->clearContents();
-
     ui->listOfScientist->setSortingEnabled(false);
-    for(unsigned int i = 0;i < a.size(); i++){
+    for(unsigned int i = 0; i < a.size(); i++){
         Computer current = list[i];
         ui->listOfScientist->setItem(i,0, new QTableWidgetItem(QString::number(current.getId())));
         ui->listOfScientist->setItem(i,1, new QTableWidgetItem(QString::fromStdString(current.getName())));
         int year = current.getYear();
-        QString yea;
-        if(year == 0){
-            yea = "--";
-            ui->listOfScientist->setItem(i,2, new QTableWidgetItem(yea));
-        }
-        else{
-            ui->listOfScientist->setItem(i,2, new QTableWidgetItem(QString::number(year)));
-        }
+        yea = showYear(year);
+        ui->listOfScientist->setItem(i,2, new QTableWidgetItem(yea));
         ui->listOfScientist->setItem(i,3, new QTableWidgetItem(QString::fromStdString(current.getType())));
         bool built = current.getBuilt();
-        QString b;
-        if(built)
-            b = "Built";
-        else
-            b = "Not built";
+        QString b = showBuilt(built);
         ui->listOfScientist->setItem(i,4, new QTableWidgetItem(b));
-
     }
     ui->listOfScientist->setSortingEnabled(true);
 
     QString label = "Row count: ";
     label = label + QString::number(ui->listOfScientist->rowCount());
     ui->rowCount_label->setText(label);
+}
+QString MainWindow::showBuilt(bool input){
+    QString output;
+    if(input)
+        output = "Built";
+    else
+        output = "Not built";
+    return output;
 }
 
 void MainWindow::createTableComputers(const int &size)
@@ -149,13 +156,12 @@ void MainWindow::moreInfo()
     if(PC)
     {
         Computer current = computerD.getComputer(id);
-        ui->infoList->addItem("ID: " + QString::number(current.getId()));
+        //ui->infoList->addItem("ID: " + QString::number(current.getId()));
     }
     else
     {
         cScientist current = personD.getPerson(id);
-        ui->infoList->addItem("ID: " + QString::number(current.getId()));
-        ui->infoList->addItem("Fun fact: \n" + QString::fromStdString(current.getFact()));
+        ui->infoList->addItem(QString::fromStdString(current.getFact()));
     }
 }
 
@@ -167,7 +173,6 @@ void MainWindow::connectedComputers()
         for(unsigned int i = 0; i < list.size();i++){
             ui->compConList->addItem(QString::fromStdString(list[i].getName()));
         }
-
     }
     else
     {
@@ -176,7 +181,6 @@ void MainWindow::connectedComputers()
             ui->compConList->addItem(QString::fromStdString(list[i].getName()));
         }
     }
-
 }
 
 void MainWindow::switchLists()
@@ -217,6 +221,8 @@ void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
     ui->edit->setEnabled(true);
     moreInfo();
     connectedComputers();
+    QString id = QString::number(getIdFromSelected());
+    ui->label_id->setText("ID: " + id);
 }
 
 void MainWindow::on_searchName_textChanged(const QString &arg1)
@@ -276,7 +282,6 @@ void MainWindow::on_edit_clicked()
 
 void MainWindow::on_delete_2_clicked()
 {
-
     int id = getIdFromSelected();
     if(!PC)
         personD.deletePerson(id);
@@ -284,8 +289,6 @@ void MainWindow::on_delete_2_clicked()
         computerD.deleteComputer(id);
 
     ui->listOfScientist->removeRow(ui->listOfScientist->currentRow());
-
-
 }
 void MainWindow::on_trash_clicked()
 {
