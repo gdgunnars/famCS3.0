@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     Storage/computerstorage.cpp \
     Storage/personstorage.cpp \
     trash.cpp \
-    edit.cpp
+    edit.cpp \
+    info.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -34,11 +35,13 @@ HEADERS  += mainwindow.h \
     Storage/computerstorage.h \
     Storage/personstorage.h \
     trash.h \
-    edit.h
+    edit.h \
+    info.h
 
 FORMS    += mainwindow.ui \
     trash.ui \
-    edit.ui
+    edit.ui \
+    info.ui
 
 RESOURCES += \
     resources.qrc
