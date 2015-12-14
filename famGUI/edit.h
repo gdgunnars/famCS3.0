@@ -5,6 +5,7 @@
 #include<cscientist.h>
 #include<computer.h>
 #include<ctype.h>
+#include <ctime>
 #include<Domain/persondomain.h>
 #include<Domain/computerdomain.h>
 
@@ -42,6 +43,7 @@ private:
     bool nameError();
     bool yearError();
     bool checkYear(QString year);
+    int currentYear();
 
     //Make changes
     void executeChanges();
