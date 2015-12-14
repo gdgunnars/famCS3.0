@@ -23,6 +23,8 @@ public:
 private slots:
     void on_updateButton_clicked();
 
+    void on_listConnected_clicked(const QModelIndex &index);
+
 private:
     Ui::edit *ui;
     //Editing start

@@ -7,6 +7,7 @@ edit::edit(const int& id,QWidget *parent) :
     currentId(id)
 {
     ui->setupUi(this);
+    ui->deleteButton->setDisabled(1);
     getObject();
 }
 edit::~edit()
@@ -251,5 +252,7 @@ void edit::on_updateButton_clicked()
     else
         return;
 }
-
-
+void edit::on_listConnected_clicked(const QModelIndex &index)
+{
+    ui->deleteButton->setEnabled(1);
+}
