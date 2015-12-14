@@ -50,6 +50,8 @@ private:
     void changeFact();
     void clearAll();
 
+    void connections();
+
     void quit();
 
     personDomain personD;

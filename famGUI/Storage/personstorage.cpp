@@ -205,6 +205,36 @@ vector<Computer> personStorage::compsConnectedToPerson(const int& id){
     }
     return connected;
 }
+vector<Computer> personStorage::compsNotConnectedToPerson(const int &id){
+    QSqlQuery a;
+    a.prepare("SELECT DISTINCT computer_id FROM Connections WHERE person_id != :id;");
+    a.bindValue(":id",id);
+    a.exec();
+    vector<int> ids;
+    while(a.next()){
+        ids.push_back(a.value(0).toInt());
+    }
+
+    QSqlQuery b;
+    vector<Computer> connected;
+    for(unsigned int i = 0; i < ids.size();i++){
+        b.prepare("SELECT * FROM Computers WHERE id = :id  ORDER BY name COLLATE NOCASE;");
+        b.bindValue(":id",ids[i]);
+        b.exec();
+        while(b.next()){
+            int id = b.value(0).toInt();
+            string name = (b.value(1).toString()).toStdString();
+            int year = b.value(2).toInt();
+            string type = (b.value(3).toString()).toStdString();
+            bool built = b.value(4).toInt();
+
+            Computer comp(id,name,year,type,built);
+            connected.push_back(comp);
+        }
+    }
+    return connected;
+}
+
 
     //Edit connections:
 void personStorage::addConnection(const int& personId, const int& computerId){

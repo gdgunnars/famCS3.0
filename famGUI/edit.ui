@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>339</height>
+    <height>405</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Edit Scientist</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -154,6 +158,16 @@
     <widget class="QLineEdit" name="lineFact"/>
    </item>
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QListWidget" name="listConnected"/>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listNotConnected"/>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QPushButton" name="updateButton">
      <property name="text">
       <string>Update scientist</string>
@@ -162,7 +176,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>checkIfAlive</sender>
