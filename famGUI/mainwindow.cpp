@@ -197,6 +197,9 @@ void MainWindow::switchLists()
         ui->add->setText("Add computer");
         ui->edit->setText("Edit computer");
         ui->delete_2->setText("Delete computer");
+        ui->connectedLabel->setText("Scientists connected:");
+        ui->infoList->setHidden(1);
+        ui->factLabel->setHidden(1);
 
     }
     else{
@@ -204,6 +207,9 @@ void MainWindow::switchLists()
         ui->add->setText("Add scientist");
         ui->edit->setText("Edit scientist");
         ui->delete_2->setText("Delete scientist");
+        ui->connectedLabel->setText("Computers connected:");
+        ui->infoList->setHidden(0);
+        ui->factLabel->setHidden(0);
     }
 }
 

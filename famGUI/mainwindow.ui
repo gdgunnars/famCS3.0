@@ -254,7 +254,7 @@ selection-color: rgb(255, 0, 0);</string>
       <item row="2" column="1">
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="connectedLabel">
           <property name="text">
            <string>Computers connected:</string>
           </property>
@@ -280,7 +280,7 @@ selection-color: rgb(255, 0, 0);</string>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="factLabel">
           <property name="text">
            <string>Fun Fact:</string>
           </property>
@@ -530,7 +530,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>740</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
