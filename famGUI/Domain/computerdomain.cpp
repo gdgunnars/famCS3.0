@@ -54,6 +54,12 @@ vector<cScientist> computerDomain::persConnectedToComp(const int &id){
     vector<cScientist> list = data.persConnectedToComp(id);
     return list;
 }
+
+vector<cScientist> computerDomain::persNotConnectedToComp(const int &id)
+{
+    vector<cScientist> list = data.persNotConnectedToComp(id);
+    return list;
+}
     //Edit connections:
 void computerDomain::addConnection(const int& computerId, const int& personId){
     data.addConnection(computerId,personId);

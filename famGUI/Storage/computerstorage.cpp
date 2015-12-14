@@ -200,6 +200,45 @@ vector<cScientist> computerStorage::persConnectedToComp(const int& id){
     }
     return connected;
 }
+
+vector<cScientist> computerStorage::persNotConnectedToComp(const int &id)
+{
+    QSqlQuery a;
+    a.prepare("select DISTINCT P.id "
+              "from Persons AS P, Connections "
+              "ON P.id NOT IN ("
+              "select Persons.id "
+              "from Persons INNER JOIN Connections "
+              "ON Persons.id = Connections.person_id "
+              "AND Connections.computer_id = :id) ORDER BY name COLLATE NOCASE;");
+    a.bindValue(":id",id);
+    a.exec();
+    vector <int> ids;
+    while(a.next()){
+        ids.push_back(a.value(0).toInt());
+    }
+
+    QSqlQuery b;
+    vector<cScientist> notConnected;
+    for(unsigned int i = 0; i < ids.size();i++){
+      b.prepare("SELECT * FROM Persons WHERE id = :id ORDER BY name COLLATE NOCASE;");
+      b.bindValue(":id",ids[i]);
+      b.exec();
+      while(b.next()){
+        int id = b.value(0).toInt();
+        string name = (b.value(1).toString()).toStdString();
+        string a = (b.value(2).toString()).toStdString();
+        char se = a[0];
+        int yearB = b.value(3).toInt();
+        int yearD = b.value(4).toInt();
+        string fact = (b.value(5).toString()).toStdString();
+
+        cScientist person(id,name,se,yearB,yearD,fact);
+        notConnected.push_back(person);
+      }
+    }
+    return notConnected;
+}
     //Edit connections:
 void computerStorage::addConnection(const int& computerId, const int& personId){
     QSqlQuery query;

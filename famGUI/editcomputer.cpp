@@ -24,7 +24,7 @@ void editComputer::getObject()
 void editComputer::showInfo()
 {
     showCurrentValues();
-    //connections();
+    connections();
 }
 
 void editComputer::showCurrentValues()
@@ -54,5 +54,15 @@ void editComputer::showIfBuilt()
 
 void editComputer::connections()
 {
+    ui->listConnected->clear();
+    ui->listNotConnected->clear();
 
+    con = computerD.persConnectedToComp(currentId);
+    for(unsigned int i = 0; i < con.size(); i++){
+        ui->listConnected->addItem(QString::fromStdString(con[i].getName()));
+    }
+    notCon = computerD.persNotConnectedToComp(currentId);
+    for(unsigned int j = 0; j < notCon.size(); j++){
+        ui->listNotConnected->addItem(QString::fromStdString(notCon[j].getName()));
+    }
 }
