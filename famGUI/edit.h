@@ -5,6 +5,7 @@
 #include<cscientist.h>
 #include<computer.h>
 #include<ctype.h>
+#include <ctime>
 #include<Domain/persondomain.h>
 #include<Domain/computerdomain.h>
 
@@ -23,6 +24,8 @@ public:
 private slots:
     void on_updateButton_clicked();
 
+    void on_listConnected_clicked(const QModelIndex &index);
+
 private:
     Ui::edit *ui;
     //Editing start
@@ -40,6 +43,7 @@ private:
     bool nameError();
     bool yearError();
     bool checkYear(QString year);
+    int currentYear();
 
     //Make changes
     void executeChanges();
@@ -48,7 +52,6 @@ private:
     void changeYob();
     void changeYod();
     void changeFact();
-    void clearAll();
 
     void connections();
 

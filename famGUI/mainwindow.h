@@ -68,7 +68,7 @@ private:
     QString showBuilt(bool input);
     void createTableComputers(const int& size);
     void moreInfo();
-    void connectedComputers();
+    void connected();
 
     //Switch:
     void switchLists();

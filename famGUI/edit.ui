@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>405</height>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,6 +164,24 @@
      </item>
      <item>
       <widget class="QListWidget" name="listNotConnected"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <widget class="QPushButton" name="deleteButton">
+       <property name="text">
+        <string>Delete connection</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="text">
+        <string>Add connection</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

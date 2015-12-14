@@ -7,6 +7,7 @@ edit::edit(const int& id,QWidget *parent) :
     currentId(id)
 {
     ui->setupUi(this);
+    ui->deleteButton->setDisabled(1);
     getObject();
 }
 edit::~edit()
@@ -108,20 +109,42 @@ bool edit::yearError()
         return error;
     }
 
+    QString year = ui->lineYob->text();
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
-    if(!(ui->checkIfAlive->isChecked())){
-        if((yearB-yearD) > 0){
-            error = true;
-            ui->errorYob->setText("Cannot be born before dying");
+    if ((yearB - currentYear()) > 0){
+        error = true;
+        ui->errorYob->setText("Invalid year of birth");
+        return error;
+    }
+
+    if (yearD - currentYear() > 0){
+        error = true;
+        ui->errorYod->setText("Invalid year of death");
+        return error;
+    }
+
+      if(!(ui->checkIfAlive->isChecked())){
+        if (year.isEmpty()){
+            yearB = currentPerson.getYearBirth();
+            if ((yearD - yearB) < 0){
+                error = true;
+                ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+            }
         }
-        else if ((currentPerson.getYearBirth()-yearD) > 0){
+        else if((yearD - yearB) < 0){
             error = true;
-            ui->errorYob->setText("Cannot be born before dying");
+            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
         }
     }
+
     return error;
+}
+int edit::currentYear(){
+    time_t t = time(0);
+    struct tm * now = localtime( & t );
+    return (now->tm_year + 1900);
 }
 
 bool edit::checkYear(QString year)
@@ -216,14 +239,6 @@ void edit::changeFact()
     }
 }
 
-void edit::clearAll()
-{
-    ui->lineName->clear();
-    ui->lineYob->clear();
-    ui->lineYod->clear();
-    ui->lineFact->clear();
-}
-
 void edit::connections()
 {
     vector<Computer> con = personD.compsConnectedToPerson(currentId);
@@ -251,5 +266,7 @@ void edit::on_updateButton_clicked()
     else
         return;
 }
-
-
+void edit::on_listConnected_clicked(const QModelIndex &index)
+{
+    ui->deleteButton->setEnabled(1);
+}
