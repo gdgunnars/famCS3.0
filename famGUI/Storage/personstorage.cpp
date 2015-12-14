@@ -207,13 +207,13 @@ vector<Computer> personStorage::compsConnectedToPerson(const int& id){
 }
 vector<Computer> personStorage::compsNotConnectedToPerson(const int &id){
     QSqlQuery a;
-    a.prepare("select DISTINCT C.id"
-              "from Computers AS C, Connections"
+    a.prepare("select DISTINCT C.id "
+              "from Computers AS C, Connections "
               "ON C.id NOT IN ("
-              "select Computers.id"
-              "from Computers INNER JOIN Connections"
-              "ON Computers.id = Connections.computer_id"
-              "AND Connections.person_id = :id );");
+              "select Computers.id "
+              "from Computers INNER JOIN Connections "
+              "ON Computers.id = Connections.computer_id "
+              "AND Connections.person_id = :id) ORDER BY name COLLATE NOCASE;");
     a.bindValue(":id",id);
     a.exec();
     vector <int> ids;
@@ -223,6 +223,7 @@ vector<Computer> personStorage::compsNotConnectedToPerson(const int &id){
 
     QSqlQuery b;
     vector<Computer> notConnected;
+
     for(unsigned int i = 0; i < ids.size();i++){
         b.prepare("SELECT * FROM Computers WHERE id = :id  ORDER BY name COLLATE NOCASE;");
         b.bindValue(":id",ids[i]);

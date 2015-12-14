@@ -321,8 +321,3 @@ void MainWindow::on_actionAbout_triggered()
     about.exec();
 }
 
-void MainWindow::on_add_clicked()
-{
-    add Adding;
-    Adding.exec();
-}

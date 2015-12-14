@@ -287,7 +287,6 @@ void edit::on_deleteButton_clicked()
 {
     int index = ui->listConnected->currentRow();
     int id = con[index].getId();
-    ui->lineFact->setText(QString::number(id));
 
     personD.deleteConnection(currentId,id);
     connections();
