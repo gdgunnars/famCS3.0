@@ -36,7 +36,6 @@ private slots:
 
     void on_delete_2_clicked();
 
-
     void on_trash_clicked();
 
 private:
@@ -51,8 +50,11 @@ private:
 
     //Display table
     void displayListPersons(vector<cScientist> a);
+    QString showGender(char input); //Gets gender as a char and returns QString with gender
+    QString showYear(int input); //Gets year as int and returns QString with year
     void createTablePersons(const int& size);
     void displayListComputers(vector<Computer> a);
+    QString showBuilt(bool input);
     void createTableComputers(const int& size);
     void moreInfo();
     void connectedComputers();
