@@ -276,14 +276,17 @@ void MainWindow::on_computerButton_clicked()
 
 void MainWindow::on_edit_clicked()
 {
-    QString id = QString::number(getIdFromSelected());
-    ui->test_output->setText(id);
-    int i = id.toInt();
-    edit window(i);
-    window.exec();
-    startingList();
-}
+    QList<QModelIndex> selectedRows = ui->listOfScientist->selectionModel()->selectedRows();
+    if (selectedRows.size() > 0) {
+        QString id = QString::number(getIdFromSelected());
+        ui->test_output->setText(id);
+        int i = id.toInt();
+        edit window(i);
+        window.exec();
+        startingList();
+    }
 
+}
 
 void MainWindow::on_delete_2_clicked()
 {
