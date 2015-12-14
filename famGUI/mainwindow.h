@@ -5,12 +5,15 @@
 #include <QModelIndex>
 #include <QVariant>
 #include <QStandardItem>
+#include <QDesktopServices>
+#include <QUrl>
 #include "cscientist.h"
 #include "computer.h"
 #include "trash.h"
 #include "edit.h"
 #include "Domain/persondomain.h"
 #include "Domain/computerdomain.h"
+#include "info.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +41,10 @@ private slots:
     void on_delete_2_clicked();
 
     void on_trash_clicked();
+
+    void on_actionGettingStarted_triggered();
+
+    void on_actionAbout_triggered();
 
 private:
     Ui::MainWindow *ui;

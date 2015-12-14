@@ -298,3 +298,15 @@ void MainWindow::on_trash_clicked()
         startingList();
     }
 }
+
+void MainWindow::on_actionGettingStarted_triggered()
+{
+    QString GetStarted = "https://github.com/gunnidg/famCS3.0/wiki";
+    QDesktopServices::openUrl(QUrl(GetStarted));
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    info about;
+    about.exec();
+}
