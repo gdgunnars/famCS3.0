@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>302</height>
+    <height>339</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,7 +116,7 @@
      <item>
       <widget class="QCheckBox" name="checkIfAlive">
        <property name="text">
-        <string>Has not died yet</string>
+        <string>Is not deceased</string>
        </property>
       </widget>
      </item>
