@@ -1,16 +1,13 @@
 #include "edit.h"
 #include "ui_edit.h"
 
-edit::edit(const bool& pc, const int& id,QWidget *parent) :
+edit::edit(const int& id,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::edit),
-    currentId(id),
-    PC(pc)
+    currentId(id)
 {
     ui->setupUi(this);
-
     getObject();
-
 }
 edit::~edit()
 {
@@ -19,17 +16,8 @@ edit::~edit()
 
 void edit::getObject()
 {
-
-    if(PC)
-    {
-         currentComp = computerD.getComputer(currentId);
-         editComputer();
-    }
-    else
-    {
-         currentPerson = personD.getPerson(currentId);
-         editPerson();
-    }
+     currentPerson = personD.getPerson(currentId);
+     editPerson();
 }
 
 void edit::editPerson()
@@ -37,25 +25,13 @@ void edit::editPerson()
     showCurrentValues();
 }
 
-void edit::editComputer()
-{
-
-}
-
 void edit::showCurrentValues()
 {
-    if(PC)
-    {
-
-    }
-    else
-    {
-        ui->lineOne->setPlaceholderText(QString::fromStdString(currentPerson.getName()));
-        showGender();
-        ui->lineThree->setPlaceholderText(QString::number(currentPerson.getYearBirth()));
-        showYod();
-        ui->lineFive->setPlaceholderText(QString::fromStdString(currentPerson.getFact()));
-    }
+    ui->lineOne->setPlaceholderText(QString::fromStdString(currentPerson.getName()));
+    showGender();
+    ui->lineThree->setPlaceholderText(QString::number(currentPerson.getYearBirth()));
+    showYod();
+    ui->lineFive->setPlaceholderText(QString::fromStdString(currentPerson.getFact()));
 }
 void edit::showGender()
 {
@@ -95,7 +71,6 @@ bool edit::checkError()
     error = nameError();
     error = yearError();
     return error;
-
 }
 
 bool edit::nameError()
