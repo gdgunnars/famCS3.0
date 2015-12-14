@@ -115,6 +115,10 @@ bool edit::yearError()
             error = true;
             ui->errorYob->setText("Cannot be born before dying");
         }
+        else if ((currentPerson.getYearBirth()-yearD) > 0){
+            error = true;
+            ui->errorYob->setText("Cannot be born before dying");
+        }
     }
     return error;
 }
