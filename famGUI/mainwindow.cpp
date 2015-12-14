@@ -156,13 +156,12 @@ void MainWindow::moreInfo()
     if(PC)
     {
         Computer current = computerD.getComputer(id);
-        ui->infoList->addItem("ID: " + QString::number(current.getId()));
+        //ui->infoList->addItem("ID: " + QString::number(current.getId()));
     }
     else
     {
         cScientist current = personD.getPerson(id);
-        ui->infoList->addItem("ID: " + QString::number(current.getId()));
-        ui->infoList->addItem("Fun fact: \n" + QString::fromStdString(current.getFact()));
+        ui->infoList->addItem(QString::fromStdString(current.getFact()));
     }
 }
 
@@ -222,6 +221,8 @@ void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
     ui->edit->setEnabled(true);
     moreInfo();
     connectedComputers();
+    QString id = QString::number(getIdFromSelected());
+    ui->label_id->setText("ID: " + id);
 }
 
 void MainWindow::on_searchName_textChanged(const QString &arg1)
