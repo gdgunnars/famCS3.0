@@ -11,38 +11,53 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>About </string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>221</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>Images/famCSStar.png</pixmap>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>210</y>
-     <width>271</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Hér kemur texti með authors</string>
-   </property>
-  </widget>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resources.qrc">:/logos/Images/famCSStar.png</pixmap>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>famCS is a program that is designed to keep record of famous computer 
+scientists and famous computers and connections between the two groups. 
+The program was made as an assignment in a 3 week course 
+in Reykjavík University at the School of Computer Science.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>The program was made by group number 24: 
+Fjóla Baldursdóttir
+Gunnar Davíð Gunnarsson 
+Helga Karlsdóttir 
+Sigurður Guðmundsson 
+Smári Björn Gunnarsson</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
