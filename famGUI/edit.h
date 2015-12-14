@@ -4,10 +4,8 @@
 #include<QDialog>
 #include<cscientist.h>
 #include<computer.h>
-#include<ctype.h>
-#include <ctime>
+#include<ctime>
 #include<Domain/persondomain.h>
-#include<Domain/computerdomain.h>
 
 namespace Ui {
 class edit;
@@ -36,7 +34,7 @@ private:
     Ui::edit *ui;
     //Editing start
     void getObject();
-    void editPerson();
+    void showInfo();
 
     //Fill placeholders
     void showCurrentValues();
@@ -45,7 +43,7 @@ private:
 
     //Check for errors
     void clearError();
-    bool checkError();
+    bool checkForErrors();
     bool nameError();
     bool yearError();
     bool checkYear(QString year);
@@ -59,8 +57,10 @@ private:
     void changeYod();
     void changeFact();
 
+    //List connections:
     void connections();
 
+    //Quit:
     void quit();
 
     personDomain personD;

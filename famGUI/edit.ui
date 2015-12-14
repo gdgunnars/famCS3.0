@@ -14,7 +14,7 @@
    <string>Edit Scientist</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -158,6 +158,24 @@
     <widget class="QLineEdit" name="lineFact"/>
    </item>
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Connected</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Not connected</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <widget class="QListWidget" name="listConnected"/>
@@ -194,9 +212,7 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>checkIfAlive</sender>

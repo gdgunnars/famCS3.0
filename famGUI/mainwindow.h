@@ -11,6 +11,7 @@
 #include "computer.h"
 #include "trash.h"
 #include "edit.h"
+#include "editcomputer.h"
 #include "Domain/persondomain.h"
 #include "Domain/computerdomain.h"
 #include "info.h"

@@ -19,10 +19,10 @@ edit::~edit()
 void edit::getObject()
 {
      currentPerson = personD.getPerson(currentId);
-     editPerson();
+     showInfo();
 }
 
-void edit::editPerson()
+void edit::showInfo()
 {
     showCurrentValues();
     connections();
@@ -61,7 +61,6 @@ void edit::showYod()
     }
 
 }
-
 void edit::clearError()
 {
     ui->errorName->clear();
@@ -69,7 +68,7 @@ void edit::clearError()
     ui->errorYod->clear();
 }
 
-bool edit::checkError()
+bool edit::checkForErrors()
 {
     bool error = false;
     error = nameError();
@@ -264,7 +263,7 @@ void edit::quit()
 void edit::on_updateButton_clicked()
 {
     clearError();
-    bool error = checkError();
+    bool error = checkForErrors();
     if(error == false){
         executeChanges();
     }

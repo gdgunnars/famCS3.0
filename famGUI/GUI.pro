@@ -23,6 +23,7 @@ SOURCES += main.cpp\
     Storage/personstorage.cpp \
     trash.cpp \
     edit.cpp \
+    editcomputer.cpp\
     info.cpp
 
 HEADERS  += mainwindow.h \
@@ -36,11 +37,13 @@ HEADERS  += mainwindow.h \
     Storage/personstorage.h \
     trash.h \
     edit.h \
+    editcomputer.h\
     info.h
 
 FORMS    += mainwindow.ui \
     trash.ui \
     edit.ui \
+    editcomputer.ui\
     info.ui
 
 RESOURCES += \
