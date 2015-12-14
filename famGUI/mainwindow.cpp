@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     PC = 0;
     ui->edit->setDisabled(true);
+    ui->delete_2->setDisabled(true);
     ui->scientistButton->setChecked(!PC);
     ui->computerButton->setChecked(PC);
     startingList();
@@ -165,7 +166,7 @@ void MainWindow::moreInfo()
     }
 }
 
-void MainWindow::connectedComputers()
+void MainWindow::connected()
 {
     int id = getIdFromSelected();
     if(PC){
@@ -185,17 +186,20 @@ void MainWindow::connectedComputers()
 
 void MainWindow::switchLists()
 {
+    ui->edit->setDisabled(true);
+    ui->delete_2->setDisabled(true);
+    ui->infoList->clear();
+    ui->compConList->clear();
+    startingList();
+    ui->searchName->clear();
     if(PC){
-        startingList();
-        ui->searchName->clear();
         ui->searchName->setPlaceholderText("Filter by name, year or type...");
         ui->add->setText("Add computer");
         ui->edit->setText("Edit computer");
         ui->delete_2->setText("Delete computer");
+
     }
     else{
-        startingList();
-        ui->searchName->clear();
         ui->searchName->setPlaceholderText("Filter by name, year of death/birth");
         ui->add->setText("Add scientist");
         ui->edit->setText("Edit scientist");
@@ -219,8 +223,9 @@ void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
 {
     ui->compConList->clear();
     ui->edit->setEnabled(true);
+    ui->delete_2->setEnabled(true);
     moreInfo();
-    connectedComputers();
+    connected();
     QString id = QString::number(getIdFromSelected());
     ui->label_id->setText("ID: " + id);
 }
@@ -289,6 +294,8 @@ void MainWindow::on_delete_2_clicked()
         computerD.deleteComputer(id);
 
     ui->listOfScientist->removeRow(ui->listOfScientist->currentRow());
+    ui->infoList->clear();
+    ui->compConList->clear();
 }
 void MainWindow::on_trash_clicked()
 {

@@ -50,7 +50,6 @@ private:
     void changeYob();
     void changeYod();
     void changeFact();
-    void clearAll();
 
     void connections();
 

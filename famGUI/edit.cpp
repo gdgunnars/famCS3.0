@@ -217,14 +217,6 @@ void edit::changeFact()
     }
 }
 
-void edit::clearAll()
-{
-    ui->lineName->clear();
-    ui->lineYob->clear();
-    ui->lineYod->clear();
-    ui->lineFact->clear();
-}
-
 void edit::connections()
 {
     vector<Computer> con = personD.compsConnectedToPerson(currentId);
