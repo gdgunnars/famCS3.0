@@ -14,6 +14,7 @@
 #include "Domain/persondomain.h"
 #include "Domain/computerdomain.h"
 #include "info.h"
+#include "add.h"
 
 namespace Ui {
 class MainWindow;
@@ -45,6 +46,8 @@ private slots:
     void on_actionGettingStarted_triggered();
 
     void on_actionAbout_triggered();
+
+    void on_add_clicked();
 
 private:
     Ui::MainWindow *ui;
