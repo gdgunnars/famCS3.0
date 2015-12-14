@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Domain/persondomain.cpp \
     Storage/computerstorage.cpp \
     Storage/personstorage.cpp \
-    trash.cpp
+    trash.cpp \
+    edit.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -32,10 +33,12 @@ HEADERS  += mainwindow.h \
     Domain/persondomain.h \
     Storage/computerstorage.h \
     Storage/personstorage.h \
-    trash.h
+    trash.h \
+    edit.h
 
 FORMS    += mainwindow.ui \
-    trash.ui
+    trash.ui \
+    edit.ui
 
 RESOURCES += \
     resources.qrc

@@ -144,19 +144,37 @@ void MainWindow::moreInfo()
 {
     ui->infoList->clear();
 
+
     int id = getIdFromSelected();
-    cScientist current = personD.getPerson(id);
-    ui->infoList->addItem("ID: " + QString::number(current.getId()));
-    ui->infoList->addItem("Fun fact: \n" + QString::fromStdString(current.getFact()));
+    if(PC)
+    {
+        Computer current = computerD.getComputer(id);
+        ui->infoList->addItem("ID: " + QString::number(current.getId()));
+    }
+    else
+    {
+        cScientist current = personD.getPerson(id);
+        ui->infoList->addItem("ID: " + QString::number(current.getId()));
+        ui->infoList->addItem("Fun fact: \n" + QString::fromStdString(current.getFact()));
+    }
 }
 
 void MainWindow::connectedComputers()
 {
     int id = getIdFromSelected();
-    vector<Computer> list = personD.compsConnectedToPerson(id);
+    if(PC){
+        vector<cScientist> list = computerD.persConnectedToComp(id);
+        for(unsigned int i = 0; i < list.size();i++){
+            ui->compConList->addItem(QString::fromStdString(list[i].getName()));
+        }
 
-    for(unsigned int i = 0; i < list.size();i++){
-        ui->compConList->addItem(QString::fromStdString(list[i].getName()));
+    }
+    else
+    {
+        vector<Computer> list = personD.compsConnectedToPerson(id);
+        for(unsigned int i = 0; i < list.size();i++){
+            ui->compConList->addItem(QString::fromStdString(list[i].getName()));
+        }
     }
 
 }
