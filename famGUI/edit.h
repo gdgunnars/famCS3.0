@@ -17,7 +17,7 @@ class edit : public QDialog
     Q_OBJECT
 
 public:
-    explicit edit(const bool& pc, const int& id,QWidget *parent = 0);
+    explicit edit(const int& id,QWidget *parent = 0);
     ~edit();
 
 private slots:
@@ -29,7 +29,6 @@ private:
 
     void getObject();
     void editPerson();
-    void editComputer();
 
     void showCurrentValues();
     void showGender();
@@ -42,12 +41,9 @@ private:
     bool checkYear(QString year);
 
     personDomain personD;
-    computerDomain computerD;
     cScientist currentPerson;
-    Computer currentComp;
 
     int currentId;
-    bool PC;
 };
 
 #endif // EDIT_H

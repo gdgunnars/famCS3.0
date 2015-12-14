@@ -273,7 +273,7 @@ void MainWindow::on_edit_clicked()
     QString id = QString::number(getIdFromSelected());
     ui->test_output->setText(id);
     int i = id.toInt();
-    edit window(PC,i);
+    edit window(i);
     window.exec();
 }
 
