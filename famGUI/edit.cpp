@@ -23,6 +23,7 @@ void edit::getObject()
 void edit::editPerson()
 {
     showCurrentValues();
+    connections();
 }
 
 void edit::showCurrentValues()
@@ -221,6 +222,15 @@ void edit::clearAll()
     ui->lineYob->clear();
     ui->lineYod->clear();
     ui->lineFact->clear();
+}
+
+void edit::connections()
+{
+    vector<Computer> con = personD.compsConnectedToPerson(currentId);
+    for(unsigned int i = 0; i < con.size(); i++){
+        ui->listConnected->addItem(QString::fromStdString(con[i].getName()));
+    }
+
 }
 
 void edit::quit()

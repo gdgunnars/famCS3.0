@@ -38,6 +38,7 @@ public:
     //Connections:
         //List connections:
     vector<Computer> compsConnectedToPerson(const int &id);//Lists persons connected to computer
+    vector<Computer> compsNotConnectedToPerson(const int &id);
         //Edit connections:
     void addConnection(const int& persontId, const int& computerId);//Add a connection
     void deleteConnection(const int& personId, const int& computerId);//Delete a connection

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>302</height>
+    <height>405</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -156,6 +156,16 @@
    </item>
    <item>
     <widget class="QLineEdit" name="lineFact"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QListWidget" name="listConnected"/>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listNotConnected"/>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QPushButton" name="updateButton">
