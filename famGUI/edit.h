@@ -25,25 +25,38 @@ private slots:
 
 private:
     Ui::edit *ui;
-
-
+    //Editing start
     void getObject();
     void editPerson();
 
+    //Fill placeholders
     void showCurrentValues();
     void showGender();
     void showYod();
 
+    //Check for errors
     void clearError();
     bool checkError();
     bool nameError();
     bool yearError();
     bool checkYear(QString year);
 
+    //Make changes
+    void executeChanges();
+    void changeName();
+    void changeGender();
+    void changeYob();
+    void changeYod();
+    void changeFact();
+    void clearAll();
+
+    void quit();
+
     personDomain personD;
     cScientist currentPerson;
 
     int currentId;
+    bool male;
 };
 
 #endif // EDIT_H

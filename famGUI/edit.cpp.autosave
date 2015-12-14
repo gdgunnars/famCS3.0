@@ -99,6 +99,7 @@ bool edit::yearError()
     error = checkYear(ui->lineYob->text());
     if(error == true){
         ui->errorYob->setText("Year cannot include letters");
+        return error;
     }
     error = checkYear(ui->lineYod->text());
     if(error == true){

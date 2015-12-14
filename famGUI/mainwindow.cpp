@@ -270,7 +270,7 @@ void MainWindow::on_edit_clicked()
     int i = id.toInt();
     edit window(i);
     window.exec();
-
+    startingList();
 }
 
 

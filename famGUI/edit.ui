@@ -24,7 +24,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="errorOne">
+      <widget class="QLabel" name="errorName">
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
@@ -36,7 +36,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineOne"/>
+    <widget class="QLineEdit" name="lineName"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -90,7 +90,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="errorThree">
+      <widget class="QLabel" name="errorYob">
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
@@ -102,7 +102,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineThree"/>
+    <widget class="QLineEdit" name="lineYob"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -121,7 +121,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="errorFour">
+      <widget class="QLabel" name="errorYod">
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
@@ -135,7 +135,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QLineEdit" name="lineFour"/>
+      <widget class="QLineEdit" name="lineYod"/>
      </item>
     </layout>
    </item>
@@ -148,20 +148,10 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="errorFive">
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 0, 0)</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineFive"/>
+    <widget class="QLineEdit" name="lineFact"/>
    </item>
    <item>
     <widget class="QPushButton" name="updateButton">
@@ -177,7 +167,7 @@
   <connection>
    <sender>checkIfAlive</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineFour</receiver>
+   <receiver>lineYod</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
