@@ -210,7 +210,23 @@ vector<Computer> personStorage::compsNotConnectedToPerson(const int &id){
     QSqlQuery b;
 
     vector <Computer> result;
-    b.prepare("SELECT * FROM Computers ORDER BY name COLLATE NOCASE;");;
+    b.prepare("select DISTINCT C.id, C.name"
+              "from Computers AS C, Connections"
+              "ON C.id NOT IN ("
+              "select Computers.id"
+              "from Computers INNER JOIN Connections"
+              "ON Computers.id = Connections.computer_id"
+              "AND Connections.person_id = 1);");
+    while(b.next()){
+        int id = b.value(0).toInt();
+        string name = (b.value(1).toString()).toStdString();
+        int year = b.value(2).toInt();
+        string type = (b.value(3).toString()).toStdString();
+        bool built = b.value(4).toInt();
+        Computer comp(id,name,year,type,built);
+        result.push_back(comp);
+    }
+   /* b.prepare("SELECT * FROM Computers ORDER BY name COLLATE NOCASE;");
     b.exec();
     while(b.next()){
         int id = b.value(0).toInt();
@@ -227,7 +243,7 @@ vector<Computer> personStorage::compsNotConnectedToPerson(const int &id){
                 result.erase(result.begin()+i);
             }
         }
-    }
+    }*/
     return result;
 }
 
