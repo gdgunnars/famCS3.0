@@ -363,7 +363,7 @@ selection-color: rgb(255, 0, 0);</string>
          <enum>QAbstractItemView::SelectRows</enum>
         </property>
         <property name="sortingEnabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="wordWrap">
          <bool>false</bool>
@@ -523,7 +523,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>740</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">

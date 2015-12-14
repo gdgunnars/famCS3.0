@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>302</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
        <property name="text">
-        <string>Name cannot include numbers</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -47,20 +47,38 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="errorTwo">
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 0, 0)</string>
-       </property>
-       <property name="text">
-        <string>Must be male or female(m/f)</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineTwo"/>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QRadioButton" name="femaleButton">
+       <property name="text">
+        <string>Female</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="maleButton">
+       <property name="text">
+        <string>Male</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -77,7 +95,7 @@
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
        <property name="text">
-        <string>Can only include numbers</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -96,26 +114,30 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="checkIfAlive">
+       <property name="text">
+        <string>Has not died yet</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="errorFour">
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
        <property name="text">
-        <string>Cannot be dead before being born</string>
+        <string/>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>Has not died yet</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="lineFour"/>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="QLineEdit" name="lineFour"/>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -132,7 +154,7 @@
         <string notr="true">color: rgb(255, 0, 0)</string>
        </property>
        <property name="text">
-        <string>???</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -142,7 +164,7 @@
     <widget class="QLineEdit" name="lineFive"/>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="updateButton">
      <property name="text">
       <string>Update scientist</string>
      </property>
@@ -151,5 +173,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>checkIfAlive</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lineFour</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
