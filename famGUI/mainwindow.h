@@ -8,6 +8,7 @@
 #include "cscientist.h"
 #include "computer.h"
 #include "trash.h"
+#include "edit.h"
 #include "Domain/persondomain.h"
 #include "Domain/computerdomain.h"
 
