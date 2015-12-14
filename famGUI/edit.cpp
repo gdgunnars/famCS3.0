@@ -109,7 +109,8 @@ bool edit::yearError()
         return error;
     }
 
-    QString year = ui->lineYob->text();
+    QString yearBi = ui->lineYob->text();
+    QString yearDe = ui->lineYod->text();
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
@@ -126,7 +127,7 @@ bool edit::yearError()
     }
 
       if(!(ui->checkIfAlive->isChecked())){
-        if (year.isEmpty()){
+         if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
             yearB = currentPerson.getYearBirth();
             if ((yearD - yearB) < 0){
                 error = true;
