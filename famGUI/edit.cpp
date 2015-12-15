@@ -59,7 +59,6 @@ void edit::showYod()
     else{
         ui->lineYod->setPlaceholderText(QString::number(currentPerson.getYearDeath()));
     }
-
 }
 void edit::clearError()
 {
@@ -111,15 +110,8 @@ bool edit::yearError()
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
-    if ((yearB - currentYear()) > 0){
-        error = true;
-        ui->errorYob->setText("Invalid year of birth");
-        return error;
-    }
-
-    if (yearD - currentYear() > 0){
-        error = true;
-        ui->errorYod->setText("Invalid year of death");
+    error = maxYear(yearB, yearD);
+    if (error == true){
         return error;
     }
 
@@ -128,11 +120,6 @@ bool edit::yearError()
     }
 
     return error;
-}
-int edit::currentYear(){
-    time_t t = time(0);
-    struct tm * now = localtime( & t );
-    return (now->tm_year + 1900);
 }
 
 bool edit::checkYear(QString year)
@@ -145,6 +132,26 @@ bool edit::checkYear(QString year)
     }
     return false;
 }
+int edit::currentYear(){
+    time_t t = time(0);
+    struct tm * now = localtime( & t );
+    return (now->tm_year + 1900);
+}
+bool edit::maxYear(int yearB, int yearD){
+    bool error = false;
+
+    if ((yearB - currentYear()) > 0){
+        error = true;
+        ui->errorYob->setText("Invalid year of birth");
+    }
+
+    if (yearD - currentYear() > 0){
+        error = true;
+        ui->errorYod->setText("Invalid year of death");
+    }
+    return error;
+}
+
 bool edit::yearCompareson(int yearB, int yearD){
     bool error = false;
 
