@@ -88,7 +88,7 @@ bool addComputer::typeError(){
     string type = ui->lineEdit_type->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isdigit(type[i])){
-            ui->errorType->setText("Invalid computertype");
+            ui->errorType->setText("Invalid computer type");
             return true;
         }
     }
