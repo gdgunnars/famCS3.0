@@ -48,6 +48,7 @@ private:
     bool yearError();
     bool checkYear(QString year);
     int currentYear();
+    bool yearCompareson(int yearB, int yearD);
 
     //Make changes
     void executeChanges();
