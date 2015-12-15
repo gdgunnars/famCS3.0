@@ -337,7 +337,26 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_add_clicked()
 {
+    if(!PC){
+        add addToList;
+        addToList.exec();
+    } else {
+        addComputer addToList;
+        addToList.exec();
+    }
+    startingList();
+}
+
+void MainWindow::on_actionNewScientist_triggered()
+{
     add addToList;
+    addToList.exec();
+    startingList();
+}
+
+void MainWindow::on_actionNewComputer_triggered()
+{
+    addComputer addToList;
     addToList.exec();
     startingList();
 }

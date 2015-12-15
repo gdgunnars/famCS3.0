@@ -105,7 +105,7 @@ bool editComputer::maxYear(int yearB){
 
     if ((yearB - currentYear()) > 0){
         error = true;
-        ui->errorYear->setText("Invalid building year");
+        ui->errorYear->setText("Invalid build year");
     }
     return error;
 }

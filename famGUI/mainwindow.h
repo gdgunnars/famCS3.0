@@ -16,6 +16,7 @@
 #include "Domain/computerdomain.h"
 #include "info.h"
 #include "add.h"
+#include "addcomputer.h"
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,10 @@ private slots:
     void on_actionAbout_triggered();
 
     void on_add_clicked();
+
+    void on_actionNewScientist_triggered();
+
+    void on_actionNewComputer_triggered();
 
 private:
     Ui::MainWindow *ui;

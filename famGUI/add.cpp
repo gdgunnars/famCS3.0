@@ -9,27 +9,28 @@ add::add(QWidget *parent) :
     fillComList();
 }
 
-add::~add()
-{
+add::~add(){
+
     delete ui;
 }
 
 void add::fillComList(){
+
     allComp = computerD.sortByName(0);
     for(unsigned int i = 0; i < allComp.size(); i++){
         ui->listWidgetComputers->addItem(QString::fromStdString(allComp[i].getName()));
     }
 }
 
-void add::clearError()
-{
+void add::clearError(){
+
     ui->errorName->clear();
     ui->errorYob->clear();
     ui->errorYod->clear();
 }
 
-bool add::checkForErrors()
-{
+bool add::checkForErrors(){
+
     bool error = false;
     error = nameError();
     if(error == true){
@@ -39,8 +40,8 @@ bool add::checkForErrors()
     return error;
 }
 
-bool add::nameError()
-{
+bool add::nameError(){
+
     bool error = false;
     string name = ui->lineEdit_name->text().toStdString();
 
@@ -53,8 +54,8 @@ bool add::nameError()
     return error;
 }
 
-bool add::yearError()
-{
+bool add::yearError(){
+
     bool error = false;
 
     error = checkYear(ui->lineEdit_yob->text());
@@ -83,8 +84,8 @@ bool add::yearError()
     return error;
 }
 
-bool add::checkYear(QString year)
-{
+bool add::checkYear(QString year){
+
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
         if(isalpha(ye[i])){
@@ -93,11 +94,13 @@ bool add::checkYear(QString year)
     }
     return false;
 }
+
 int add::currentYear(){
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
 }
+
 bool add::maxYear(int yearB, int yearD){
     bool error = false;
 
@@ -114,34 +117,17 @@ bool add::maxYear(int yearB, int yearD){
 }
 
 bool add::yearComparison(int yearB, int yearD){
-    bool error = false;
+   bool error = false;
 
-    QString yearBi = ui->lineEdit_yob->text();
-    QString yearDe = ui->lineEdit_yod->text();
-
-/*    if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
-       yearB = currentPerson.getYearBirth();
-       if ((yearD - yearB) < 0){
-           error = true;
-           ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-       }
-   }
-   else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
-        yearD = currentPerson.getYearDeath();
-        if((yearD - yearB) < 0){
-            error = true;
-            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-        }
-    }
-   else if((yearD - yearB) < 0){
+   if((yearD - yearB) < 0){
        error = true;
        ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-   }*/
+   }
     return error;
 }
 
-void add::on_pushButtonAddPerson_clicked()
-{
+void add::on_pushButtonAddPerson_clicked(){
+
     clearError();
     if(!checkForErrors()){
         string name = ui->lineEdit_name->text().toStdString();
@@ -155,13 +141,13 @@ void add::on_pushButtonAddPerson_clicked()
         if(ui->checkBox_deceaced->isChecked())
             YoD = 0;
         else
-            YoD = ui->checkBox_deceaced->text().toInt();
+            YoD = ui->lineEdit_yod->text().toInt();
         string funFact = ui->lineEdit_funfact->text().toStdString();
         int newPersonId = personD.addPerson(name, gender, YoB, YoD, funFact);
 
         if(ui->checkBoxConnectCPU->isChecked()){
            QList<QListWidgetItem *> cpuIDs = ui->listWidgetComputers->selectedItems();
-           for(unsigned int i = 0; i < cpuIDs.size(); i++){
+           for(int i = 0; i < cpuIDs.size(); i++){
                personD.addConnection(newPersonId,allComp[ui->listWidgetComputers->row(cpuIDs.at(i))].getId());
            }
         }

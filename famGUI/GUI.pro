@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     edit.cpp \
     editcomputer.cpp\
     info.cpp \
-    add.cpp
+    add.cpp \
+    addcomputer.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -40,14 +41,16 @@ HEADERS  += mainwindow.h \
     edit.h \
     editcomputer.h\
     info.h \
-    add.h
+    add.h \
+    addcomputer.h
 
 FORMS    += mainwindow.ui \
     trash.ui \
     edit.ui \
     editcomputer.ui\
     info.ui \
-    add.ui
+    add.ui \
+    addcomputer.ui
 
 RESOURCES += \
     resources.qrc
