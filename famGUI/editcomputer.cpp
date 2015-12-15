@@ -209,3 +209,33 @@ void editComputer::on_updateButton_clicked()
     else
         return;
 }
+
+void editComputer::on_listConnected_clicked(const QModelIndex &index)
+{
+    ui->deleteButton->setEnabled(1);
+    ui->addButton->setDisabled(1);
+}
+
+void editComputer::on_listNotConnected_clicked(const QModelIndex &index)
+{
+    ui->deleteButton->setDisabled(1);
+    ui->addButton->setEnabled(1);
+}
+
+void editComputer::on_deleteButton_clicked()
+{
+    int index = ui->listConnected->currentRow();
+    int id = con[index].getId();
+
+    computerD.deleteConnection(currentId,id);
+    connections();
+}
+
+void editComputer::on_addButton_clicked()
+{
+    int index = ui->listNotConnected->currentRow();
+    int id = notCon[index].getId();
+
+    computerD.addConnection(currentId,id);
+    connections();
+}

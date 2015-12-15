@@ -22,6 +22,14 @@ public:
 private slots:
     void on_updateButton_clicked();
 
+    void on_listConnected_clicked(const QModelIndex &index);
+
+    void on_listNotConnected_clicked(const QModelIndex &index);
+
+    void on_deleteButton_clicked();
+
+    void on_addButton_clicked();
+
 private:
     Ui::editComputer *ui;
     //Editing start

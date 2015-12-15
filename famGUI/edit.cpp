@@ -131,11 +131,22 @@ bool edit::yearError()
             if ((yearD - yearB) < 0){
                 error = true;
                 ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+                return error;
             }
         }
+        else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
+             yearD = currentPerson.getYearDeath();
+             if((yearD-yearB) < 0){
+                 error = true;
+                 ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+                 return error;
+
+             }
+         }
         else if((yearD - yearB) < 0){
             error = true;
             ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+            return error;
         }
     }
 
