@@ -30,9 +30,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_listOfScientist_clicked(const QModelIndex &index);
+    void on_listOfScientist_clicked();
 
-    void on_searchName_textChanged(const QString &arg1);
+    void on_searchName_textChanged();
 
     void on_scientistButton_clicked();
 
