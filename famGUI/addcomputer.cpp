@@ -31,11 +31,11 @@ void addComputer::clearError(){
 bool addComputer::checkForErrors(){
 
     bool error = false;
-    error = nameError();
+    error = yearError();
     if(error == true){
         return error;
     }
-    error = yearError();
+    error = typeError();
     return error;
 }
 
@@ -96,6 +96,16 @@ bool addComputer::maxYear(int yearB){
     }
 
     return error;
+}
+
+bool editComputer::typeError(){
+    string type = ui->lineType->text().toStdString();
+    for(unsigned int i = 0; i < type.length(); i++){
+        if(isdigit(type[i])){
+            return true;
+        }
+    }
+    return false;
 }
 
 void addComputer::on_pushButton_addComputer_clicked()

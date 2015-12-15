@@ -36,6 +36,7 @@ private:
     bool checkYear(QString year); //Is true if year contains letter
     int currentYear(); //Gives current year
     bool maxYear(int yearB); //Is true if input year is greater then current year
+    bool typeError();
 };
 
 #endif // ADDCOMPUTER_H
