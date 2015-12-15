@@ -33,19 +33,20 @@ private slots:
 private:
     Ui::editComputer *ui;
     //Editing start
-    void getObject();
-    void showInfo();
+    void getObject(); //Sets current computer
+    void showInfo(); //Initiates showing current values and connections
 
     //Fill placeholders
-    void showCurrentValues();
-    void showYearBuilt();
-    void showIfBuilt();
+    void showCurrentValues(); //Shows current values for computer
+    void showYearBuilt(); //Shows current building year, if not built string appeares
+    void showIfBuilt(); //Shows if it was built or not
 
     //Check for errors
-    void clearError();
-    bool checkForErrors();
-    bool yearError();
-    bool checkYear(const QString& year);
+    void clearError(); //Clears errors messages
+    bool checkForErrors(); //Main controller for errorcheck
+    bool yearError(); //Main controller for errorcheck for year
+    bool checkYear(const QString& year); //Is ture if year contains letter
+    bool maxYear(int yearB);
     bool typeError();
     int currentYear();
 
@@ -59,6 +60,7 @@ private:
     //List connections:
     void connections();
 
+    //Quit:
     void quit();
 
     computerDomain computerD;

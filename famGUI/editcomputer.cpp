@@ -57,7 +57,6 @@ void editComputer::showIfBuilt(){
 
 void editComputer::clearError(){
 
-    ui->errorName->clear();
     ui->errorYear->clear();
     ui->errorType->clear();
 }
@@ -84,12 +83,8 @@ bool editComputer::yearError(){
     }
 
     int yearB = ui->lineYear->text().toInt();
+    error = maxYear(yearB);
 
-    if ((yearB - currentYear()) > 0){
-        error = true;
-        ui->errorYear->setText("Invalid year of build");
-        return error;
-    }
     return error;
 }
 
@@ -102,6 +97,17 @@ bool editComputer::checkYear(const QString& year){
         }
     }
     return false;
+}
+
+bool editComputer::maxYear(int yearB){
+
+    bool error = false;
+
+    if ((yearB - currentYear()) > 0){
+        error = true;
+        ui->errorYear->setText("Invalid building year");
+    }
+    return error;
 }
 
 bool editComputer::typeError(){
