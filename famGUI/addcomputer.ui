@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add Computer</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -52,6 +52,9 @@
      </item>
      <item>
       <widget class="QLabel" name="errorYear">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 0, 0);</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -73,6 +76,9 @@
      </item>
      <item>
       <widget class="QLabel" name="errorType">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 0, 0);</string>
+       </property>
        <property name="text">
         <string/>
        </property>
