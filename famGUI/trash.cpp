@@ -31,7 +31,7 @@ void Trash::getErased(){
 
 void Trash::on_pushButton_clicked()
 {
-    if(ui->person_listWidget->currentRow() > 0){
+    if(ui->person_listWidget->currentRow() >= 0){
         int rowId = ui->person_listWidget->currentRow();
         int id = currentPersonVector[rowId].getId();
         personD.restoreFromBin(id);
@@ -41,7 +41,7 @@ void Trash::on_pushButton_clicked()
 
 void Trash::on_pushButton_2_clicked()
 {
-    if(ui->computer_listWidget->currentRow()> 0){
+    if(ui->computer_listWidget->currentRow() >= 0){
         int rowId = ui->computer_listWidget->currentRow();
         int id = currentComputerVector[rowId].getId();
         computerD.restoreFromBin(id);

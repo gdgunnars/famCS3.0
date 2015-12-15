@@ -279,13 +279,13 @@ void edit::on_updateButton_clicked()
     else
         return;
 }
-void edit::on_listConnected_clicked(const QModelIndex &index)
+void edit::on_listConnected_clicked()
 {
     ui->deleteButton->setEnabled(1);
     ui->addButton->setDisabled(1);
 }
 
-void edit::on_listNotConnected_clicked(const QModelIndex &index)
+void edit::on_listNotConnected_clicked()
 {
     ui->deleteButton->setDisabled(1);
     ui->addButton->setEnabled(1);

@@ -22,9 +22,9 @@ public:
 private slots:
     void on_updateButton_clicked();
 
-    void on_listConnected_clicked(const QModelIndex &index);
+    void on_listConnected_clicked();
 
-    void on_listNotConnected_clicked(const QModelIndex &index);
+    void on_listNotConnected_clicked();
 
     void on_deleteButton_clicked();
 
