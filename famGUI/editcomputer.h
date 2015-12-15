@@ -19,6 +19,9 @@ public:
     explicit editComputer(const int& id, QWidget *parent = 0);
     ~editComputer();
 
+private slots:
+    void on_updateButton_clicked();
+
 private:
     Ui::editComputer *ui;
     //Editing start
@@ -32,9 +35,9 @@ private:
 
     //Check for errors
     void clearError();
-    bool checkError();
-    bool nameError();
+    bool checkForErrors();
     bool yearError();
+    bool checkYear(const QString& year);
     bool typeError();
     int currentYear();
 

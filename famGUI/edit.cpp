@@ -77,7 +77,6 @@ bool edit::checkForErrors()
     }
     error = yearError();
     return error;
-
 }
 
 bool edit::nameError()
@@ -167,9 +166,6 @@ void edit::executeChanges()
     changeYod();
     changeFact();
     quit();
-    /*clearAll();
-    getObject();
-    showCurrentValues();*/
 }
 
 void edit::changeName()
@@ -205,7 +201,6 @@ void edit::changeYob()
     else{
         personD.editPerson(currentId,year,4);
     }
-
 }
 
 void edit::changeYod()
