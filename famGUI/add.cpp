@@ -142,7 +142,7 @@ bool add::yearComparison(int yearB, int yearD){
 
 void add::on_pushButtonAddPerson_clicked()
 {
-    int newPersonId;
+    clearError();
     if(!checkForErrors()){
         string name = ui->lineEdit_name->text().toStdString();
         char gender;
@@ -157,6 +157,14 @@ void add::on_pushButtonAddPerson_clicked()
         else
             YoD = ui->checkBox_deceaced->text().toInt();
         string funFact = ui->lineEdit_funfact->text().toStdString();
-        newPersonId = personD.addPerson(name, gender, YoB, YoD, funFact);
+        int newPersonId = personD.addPerson(name, gender, YoB, YoD, funFact);
+
+        if(ui->checkBoxConnectCPU->isChecked()){
+           QList<QListWidgetItem *> cpuIDs = ui->listWidgetComputers->selectedItems();
+           for(unsigned int i = 0; i < cpuIDs.size(); i++){
+               personD.addConnection(newPersonId,allComp[ui->listWidgetComputers->row(cpuIDs.at(i))].getId());
+           }
+        }
+        close();
     }
 }

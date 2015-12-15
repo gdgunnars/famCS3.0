@@ -59,6 +59,9 @@
        <property name="text">
         <string>Female</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -143,6 +146,9 @@
     <widget class="QListWidget" name="listWidgetComputers">
      <property name="enabled">
       <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
      </property>
     </widget>
    </item>
