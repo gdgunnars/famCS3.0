@@ -1,10 +1,12 @@
 #include "computerstorage.h"
 
-computerStorage::computerStorage()
-{
+computerStorage::computerStorage(){
+
   runningDB = QSqlDatabase::database();
 }
+
 vector<Computer> computerStorage::execute(QSqlQuery query){
+
     vector<Computer> list;
     query.exec();
     while(query.next()){//Býr til tölvu og setur inn í vektor
@@ -14,14 +16,15 @@ vector<Computer> computerStorage::execute(QSqlQuery query){
        string type = (query.value(3).toString()).toStdString();
        bool built = query.value(4).toInt();
 
-
        Computer comp(id,name,year,type,built);
        list.push_back(comp);
     }
 
     return list;
 }
+
 Computer computerStorage::getComputer(const int& id){
+
     QSqlQuery query;
     query.prepare("SELECT * FROM Computers WHERE erased = 0 AND id = :id");
     query.bindValue(":id",id);
@@ -51,7 +54,6 @@ vector<Computer> computerStorage::sortByName(const bool& desc){
 
     vector<Computer> list = execute(query);
     return list;
-
 }
 
 //Search list:
@@ -125,6 +127,7 @@ void computerStorage::deleteComputer(const int& id){
 //Connections:
     //List connections:
 vector<cScientist> computerStorage::persConnectedToComp(const int& id){
+
     QSqlQuery a;
     a.prepare("SELECT * FROM Connections WHERE computer_id = :id;");
     a.bindValue(":id",id);
@@ -133,7 +136,6 @@ vector<cScientist> computerStorage::persConnectedToComp(const int& id){
     while(a.next()){
         ids.push_back(a.value(0).toInt());
     }
-
 
     QSqlQuery b;
     vector<cScientist> connected;
@@ -157,8 +159,8 @@ vector<cScientist> computerStorage::persConnectedToComp(const int& id){
     return connected;
 }
 
-vector<cScientist> computerStorage::persNotConnectedToComp(const int &id)
-{
+vector<cScientist> computerStorage::persNotConnectedToComp(const int &id){
+
     QSqlQuery a;
     a.prepare("select DISTINCT P.id "
               "from Persons AS P, Connections "
@@ -197,6 +199,7 @@ vector<cScientist> computerStorage::persNotConnectedToComp(const int &id)
 }
     //Edit connections:
 void computerStorage::addConnection(const int& computerId, const int& personId){
+
     QSqlQuery query;
     query.prepare("INSERT INTO Connections (person_id,computer_id) VALUES (:first,:second);");
     query.bindValue(":first",personId);
@@ -205,6 +208,7 @@ void computerStorage::addConnection(const int& computerId, const int& personId){
 }
 
 void computerStorage::deleteConnection(const int& computerId, const int& personId){
+
     QSqlQuery query;
     query.prepare("DELETE FROM Connections WHERE computer_id = :first AND person_id = :second;");
     query.bindValue(":first",computerId);
@@ -212,6 +216,7 @@ void computerStorage::deleteConnection(const int& computerId, const int& personI
     query.exec();
 }
 vector<Computer> computerStorage::listErased(){
+
     QSqlQuery query;
     query.prepare("SELECT * FROM Computers WHERE erased = 1 ORDER BY name COLLATE NOCASE;");
 
@@ -220,9 +225,9 @@ vector<Computer> computerStorage::listErased(){
     return list;
 }
 void computerStorage::restoreFromBin(const int& id){
+
     QSqlQuery query;
     query.prepare("UPDATE Computers SET erased = 0 WHERE id = :id;");
     query.bindValue(":id",QString::number(id));
     query.exec();
 }
-
