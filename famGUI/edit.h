@@ -33,8 +33,8 @@ private slots:
 private:
     Ui::edit *ui;
     //Editing start
-    void getObject(); //Gets currentPerson
-    void showInfo(); //Starts show current values and connenctions
+    void getObject(); //Sets current person
+    void showInfo(); //Initiates showing current values and connections
 
     //Fill placeholders
     void showCurrentValues(); //Shows current values for scientist
