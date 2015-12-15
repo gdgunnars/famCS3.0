@@ -121,6 +121,7 @@ bool editComputer::typeError(){
     string type = ui->lineType->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isdigit(type[i])){
+            ui->errorType->setText("Invalid computer type");
             return true;
         }
     }
