@@ -210,13 +210,13 @@ void editComputer::on_updateButton_clicked()
         return;
 }
 
-void editComputer::on_listConnected_clicked(const QModelIndex &index)
+void editComputer::on_listConnected_clicked()
 {
     ui->deleteButton->setEnabled(1);
     ui->addButton->setDisabled(1);
 }
 
-void editComputer::on_listNotConnected_clicked(const QModelIndex &index)
+void editComputer::on_listNotConnected_clicked()
 {
     ui->deleteButton->setDisabled(1);
     ui->addButton->setEnabled(1);

@@ -59,7 +59,6 @@ void edit::showYod()
     else{
         ui->lineYod->setPlaceholderText(QString::number(currentPerson.getYearDeath()));
     }
-
 }
 void edit::clearError()
 {
@@ -108,54 +107,19 @@ bool edit::yearError()
         return error;
     }
 
-    QString yearBi = ui->lineYob->text();
-    QString yearDe = ui->lineYod->text();
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
-    if ((yearB - currentYear()) > 0){
-        error = true;
-        ui->errorYob->setText("Invalid year of birth");
-        return error;
-    }
-
-    if (yearD - currentYear() > 0){
-        error = true;
-        ui->errorYod->setText("Invalid year of death");
+    error = maxYear(yearB, yearD);
+    if (error == true){
         return error;
     }
 
       if(!(ui->checkIfAlive->isChecked())){
-         if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
-            yearB = currentPerson.getYearBirth();
-            if ((yearD - yearB) < 0){
-                error = true;
-                ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-                return error;
-            }
-        }
-        else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
-             yearD = currentPerson.getYearDeath();
-             if((yearD-yearB) < 0){
-                 error = true;
-                 ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-                 return error;
-
-             }
-         }
-        else if((yearD - yearB) < 0){
-            error = true;
-            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-            return error;
-        }
+        error = yearCompareson(yearB, yearD);
     }
 
     return error;
-}
-int edit::currentYear(){
-    time_t t = time(0);
-    struct tm * now = localtime( & t );
-    return (now->tm_year + 1900);
 }
 
 bool edit::checkYear(QString year)
@@ -167,6 +131,52 @@ bool edit::checkYear(QString year)
         }
     }
     return false;
+}
+int edit::currentYear(){
+    time_t t = time(0);
+    struct tm * now = localtime( & t );
+    return (now->tm_year + 1900);
+}
+bool edit::maxYear(int yearB, int yearD){
+    bool error = false;
+
+    if ((yearB - currentYear()) > 0){
+        error = true;
+        ui->errorYob->setText("Invalid year of birth");
+    }
+
+    if (yearD - currentYear() > 0){
+        error = true;
+        ui->errorYod->setText("Invalid year of death");
+    }
+    return error;
+}
+
+bool edit::yearCompareson(int yearB, int yearD){
+    bool error = false;
+
+    QString yearBi = ui->lineYob->text();
+    QString yearDe = ui->lineYod->text();
+
+    if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
+       yearB = currentPerson.getYearBirth();
+       if ((yearD - yearB) < 0){
+           error = true;
+           ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+       }
+   }
+   else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
+        yearD = currentPerson.getYearDeath();
+        if((yearD - yearB) < 0){
+            error = true;
+            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+        }
+    }
+   else if((yearD - yearB) < 0){
+       error = true;
+       ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+   }
+    return error;
 }
 
 void edit::executeChanges()
@@ -276,13 +286,13 @@ void edit::on_updateButton_clicked()
     else
         return;
 }
-void edit::on_listConnected_clicked(const QModelIndex &index)
+void edit::on_listConnected_clicked()
 {
     ui->deleteButton->setEnabled(1);
     ui->addButton->setDisabled(1);
 }
 
-void edit::on_listNotConnected_clicked(const QModelIndex &index)
+void edit::on_listNotConnected_clicked()
 {
     ui->deleteButton->setDisabled(1);
     ui->addButton->setEnabled(1);

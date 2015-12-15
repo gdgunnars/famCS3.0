@@ -225,7 +225,7 @@ int MainWindow::getIdFromSelected(){
 }
 
 // Buttons ---------
-void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
+void MainWindow::on_listOfScientist_clicked()
 {
     ui->compConList->clear();
     ui->edit->setEnabled(true);
@@ -236,7 +236,7 @@ void MainWindow::on_listOfScientist_clicked(const QModelIndex &index)
     ui->label_id->setText("ID: " + id);
 }
 
-void MainWindow::on_searchName_textChanged(const QString &arg1)
+void MainWindow::on_searchName_textChanged()
 {
         if(PC){
             string input = ui->searchName->text().toStdString();
