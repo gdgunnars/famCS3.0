@@ -141,7 +141,7 @@ void add::on_pushButtonAddPerson_clicked(){
         if(ui->checkBox_deceaced->isChecked())
             YoD = 0;
         else
-            YoD = ui->checkBox_deceaced->text().toInt();
+            YoD = ui->lineEdit_yod->text().toInt();
         string funFact = ui->lineEdit_funfact->text().toStdString();
         int newPersonId = personD.addPerson(name, gender, YoB, YoD, funFact);
 
