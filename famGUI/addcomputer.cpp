@@ -39,20 +39,6 @@ bool addComputer::checkForErrors(){
     return error;
 }
 
-bool addComputer::nameError(){
-
-    bool error = false;
-    string name = ui->lineEdit_name->text().toStdString();
-
-    for(unsigned int i = 0; i < name.length();i++){
-        if(isdigit(name[i])){
-            error = true;
-            ui->errorName->setText("Name cannot include numbers");
-        }
-    }
-    return error;
-}
-
 bool addComputer::yearError(){
 
     bool error = false;
@@ -92,14 +78,14 @@ bool addComputer::maxYear(int yearB){
 
     if ((yearB - currentYear()) > 0){
         error = true;
-        ui->errorYob->setText("Invalid build year");
+        ui->errorYear->setText("Invalid build year");
     }
 
     return error;
 }
 
-bool editComputer::typeError(){
-    string type = ui->lineType->text().toStdString();
+bool addComputer::typeError(){
+    string type = ui->lineEdit_type->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isdigit(type[i])){
             return true;
@@ -110,8 +96,8 @@ bool editComputer::typeError(){
 
 void addComputer::on_pushButton_addComputer_clicked()
 {
-   // clearError();
-  //  if(!checkForErrors()){
+    clearError();
+    if(!checkForErrors()){
        string name = ui->lineEdit_name->text().toStdString();
        bool wasItBuilt;
        int buildYear;
@@ -125,14 +111,13 @@ void addComputer::on_pushButton_addComputer_clicked()
        string type = ui->lineEdit_type->text().toStdString();
 
        int newComputerId = computerD.addComputer(name, buildYear, type, wasItBuilt);
-       //        addPerson(name, gender, YoB, YoD, funFact);
 
-    /*   if(ui->checkBoxConnectCPU->isChecked()){
-          QList<QListWidgetItem *> cpuIDs = ui->listWidgetComputers->selectedItems();
+       if(ui->checkBoxConnectPers->isChecked()){
+          QList<QListWidgetItem *> cpuIDs = ui->listAllPersons->selectedItems();
           for(int i = 0; i < cpuIDs.size(); i++){
-              personD.addConnection(newPersonId,allComp[ui->listWidgetComputers->row(cpuIDs.at(i))].getId());
+              computerD.addConnection(newComputerId,allPers[ui->listAllPersons->row(cpuIDs.at(i))].getId());
           }
        }
-      */ close();
-    //}
+       close();
+    }
 }

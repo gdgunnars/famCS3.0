@@ -84,7 +84,7 @@
     <widget class="QLineEdit" name="lineEdit_type"/>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="checkBoxConnectPers">
      <property name="text">
       <string>Connect to a Scientist</string>
      </property>
@@ -94,6 +94,9 @@
     <widget class="QListWidget" name="listAllPersons">
      <property name="enabled">
       <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
      </property>
     </widget>
    </item>
@@ -109,7 +112,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>checkBox</sender>
+   <sender>checkBoxConnectPers</sender>
    <signal>clicked(bool)</signal>
    <receiver>listAllPersons</receiver>
    <slot>setEnabled(bool)</slot>
