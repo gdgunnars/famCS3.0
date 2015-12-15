@@ -14,20 +14,6 @@ vector<Computer> computerDomain::sortByName(const bool& desc){
     vector<Computer> list = data.sortByName(desc);
     return list;
 }
-vector<Computer> computerDomain::sortByYear(const bool& desc){
-    vector<Computer> list = data.sortByYear(desc);
-    return list;
-}
-
-vector<Computer> computerDomain::sortByType(const bool& desc){
-    vector<Computer> list = data.sortByType(desc);
-    return list;
-}
-
-vector<Computer> computerDomain::sortByBuild(const bool& desc){
-    vector<Computer> list = data.sortByBuild(desc);
-    return list;
-}
 //Search list:
 vector<Computer> computerDomain::searchByName(string input){
     vector<Computer> list = data.searchByName(input);

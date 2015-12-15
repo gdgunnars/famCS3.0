@@ -21,9 +21,6 @@ public:
 
     //Show list:
     vector<Computer> sortByName(const bool& desc);//Sorts by name
-    vector<Computer> sortByYear(const bool& desc);//Sorts by year
-    vector<Computer> sortByType(const bool& desc);//Sorts by type
-    vector<Computer> sortByBuild(const bool& desc);//Sorts by build
 
     //Search list:
     vector<Computer> searchByName(string input);//Searches by name

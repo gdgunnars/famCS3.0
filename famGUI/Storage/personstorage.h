@@ -23,9 +23,6 @@ class personStorage
     cScientist getPerson(const int& id);
     //Show list:
     vector<cScientist> sortByName(const bool& desc);//Sorts alphabetically
-    vector<cScientist> sortBySex(const bool& desc);//Sorts by sex
-    vector<cScientist> sortByYear(const bool& desc, const bool& bord);//Sorts by year of birth/death
-
     //Search list:
     vector<cScientist> searchByName(string input);//Searches by name
 

@@ -54,50 +54,6 @@ vector<Computer> computerStorage::sortByName(const bool& desc){
 
 }
 
-vector<Computer> computerStorage::sortByYear(const bool& desc){
-    QSqlQuery query = QSqlQuery(runningDB);
-    if(desc){
-        query.prepare("SELECT * FROM Computers "
-                      "WHERE erased = 0 ORDER BY "
-                      "build_year DESC, name COLLATE NOCASE ASC;");
-    }
-    else{
-        query.prepare("SELECT * FROM Computers "
-                      "WHERE erased = 0 ORDER BY "
-                      "build_year, name COLLATE NOCASE ASC;");
-    }
-    vector<Computer> list = execute(query);
-    return list;
-}
-
-vector<Computer> computerStorage::sortByType(const bool& desc){
-    QSqlQuery query = QSqlQuery(runningDB);
-    if(desc){
-        query.prepare("SELECT * FROM Computers "
-                      "WHERE erased = 0 ORDER BY "
-                      "type COLLATE NOCASE DESC, name COLLATE NOCASE ASC;");
-    }
-    else{
-        query.prepare("SELECT * FROM Computers "
-                      "WHERE erased = 0 ORDER "
-                      "BY type COLLATE NOCASE, name COLLATE NOCASE ASC;");
-    }
-    vector<Computer> list = execute(query);
-    return list;
-}
-
-vector<Computer> computerStorage::sortByBuild(const bool& desc){
-    QSqlQuery query = QSqlQuery(runningDB);
-    if(desc){
-        query.prepare("SELECT * FROM Computers WHERE erased = 0 ORDER BY built DESC, name COLLATE NOCASE ASC;");
-    }
-    else{
-        query.prepare("SELECT * FROM Computers WHERE erased = 0 ORDER BY built, name COLLATE NOCASE ASC;");
-    }
-    vector<Computer> list = execute(query);
-    return list;
-}
-
 //Search list:
 vector<Computer> computerStorage::searchByName(string input){
     QSqlQuery query = QSqlQuery(runningDB);

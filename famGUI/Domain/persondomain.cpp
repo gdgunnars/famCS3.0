@@ -15,16 +15,6 @@ vector<cScientist> personDomain::sortByName(const bool& desc){
     return list;
 }
 
-vector<cScientist> personDomain::sortBySex(const bool& desc){
-    vector<cScientist> list = data.sortBySex(desc);
-    return list;
-}
-
-vector<cScientist> personDomain::sortByYear(const bool& desc, const bool& bord){
-    vector<cScientist> list = data.sortByYear(desc,bord);
-    return list;
-}
-
 //Search list:
 vector<cScientist> personDomain::searchByName(string input){
     vector<cScientist> list = data.searchByName(input);

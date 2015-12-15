@@ -57,52 +57,6 @@ vector<cScientist> personStorage::sortByName(const bool& desc){
     return list;
 }
 
-vector<cScientist> personStorage::sortBySex(const bool& desc){
-   QSqlQuery query;
-
-    if(desc){
-        query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                      "ORDER BY gender COLLATE NOCASE DESC, name COLLATE NOCASE ASC;");
-        //Z-A
-    }
-    else{
-        query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                      "ORDER BY gender COLLATE NOCASE ,name COLLATE NOCASE;");
-        //A-Z
-    }
-
-    vector<cScientist> list = execute(query);
-
-    return list;
-}
-
-vector<cScientist>  personStorage::sortByYear(const bool& desc, const bool& bord){
-    QSqlQuery query;
-
-    if(desc){
-        if(!bord){
-            query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                          "ORDER BY yob DESC, name COLLATE NOCASE ASC;");
-        }
-        else{
-            query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                          "ORDER BY yod DESC, name COLLATE NOCASE ASC;");
-        }
-    }
-    else{
-        if(!bord){
-            query.prepare("SELECT * FROM Persons WHERE erased = 0"
-                          " ORDER BY yob, name COLLATE NOCASE ASC;");
-        }
-        else{
-            query.prepare("SELECT * FROM Persons WHERE erased = 0 "
-                          "ORDER BY yod, name COLLATE NOCASE ASC;");
-        }
-    }
-    vector<cScientist> list = execute(query);
-    return list;
-}
-
 //Search list:
 vector<cScientist> personStorage::searchByName(string input){
 
