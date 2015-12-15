@@ -17,13 +17,13 @@ MainWindow::MainWindow(QWidget *parent) :
     startingList();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
+
     delete ui;
 }
 
-void MainWindow::startingList()
-{
+void MainWindow::startingList(){
+
     ui->searchName->clear();
     if(PC){
         vector<Computer> list = computerD.sortByName(0);
@@ -34,8 +34,9 @@ void MainWindow::startingList()
         displayListPersons(list);
     }
 }
-void MainWindow::displayListPersons(vector<cScientist> a)
-{
+
+void MainWindow::displayListPersons(vector<cScientist> a){
+
     vector<cScientist> list = a;
     QString gender;
     QString yo;
@@ -66,28 +67,26 @@ void MainWindow::displayListPersons(vector<cScientist> a)
 
 QString MainWindow::showGender(char input){
     QString gender;
-    if(input == 'M' || input == 'm'){
+    if(input == 'M' || input == 'm')
         gender = "Male";
-    }
-    else{
+    else
         gender = "Female";
-    }
+
     return gender;
 }
 
 QString MainWindow::showYear(int input){
     QString year;
-    if(input == 0){
+    if(input == 0)
         year = "--";
-    }
-    else{
+    else
         year = QString::number(input);
-    }
+
     return year;
 }
 
-void MainWindow::createTablePersons(const int& size)
-{
+void MainWindow::createTablePersons(const int& size){
+
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_PERSON);
     ui->listOfScientist->setColumnWidth(1,200);
@@ -99,8 +98,8 @@ void MainWindow::createTablePersons(const int& size)
     ui->listOfScientist->setHorizontalHeaderLabels(header);
 }
 
-void MainWindow::displayListComputers(vector<Computer> a)
-{
+void MainWindow::displayListComputers(vector<Computer> a){
+
     vector<Computer> list = a;
     QString yea;
 
@@ -127,6 +126,7 @@ void MainWindow::displayListComputers(vector<Computer> a)
     ui->rowCount_label->setText(label);
 }
 QString MainWindow::showBuilt(bool input){
+
     QString output;
     if(input)
         output = "Built";
@@ -135,8 +135,8 @@ QString MainWindow::showBuilt(bool input){
     return output;
 }
 
-void MainWindow::createTableComputers(const int &size)
-{
+void MainWindow::createTableComputers(const int &size){
+
     ui->listOfScientist->setRowCount(size);
     ui->listOfScientist->setColumnCount(COLUMNS_COMPUTER);
     ui->listOfScientist->verticalHeader()->setVisible(true);
@@ -148,26 +148,23 @@ void MainWindow::createTableComputers(const int &size)
     ui->listOfScientist->setHorizontalHeaderLabels(header);
 }
 
-void MainWindow::moreInfo()
-{
+void MainWindow::moreInfo(){
+
     ui->infoList->clear();
 
-
     int id = getIdFromSelected();
-    if(PC)
-    {
+    if(PC){
         Computer current = computerD.getComputer(id);
         //ui->infoList->addItem("ID: " + QString::number(current.getId()));
     }
-    else
-    {
+    else{
         cScientist current = personD.getPerson(id);
         ui->infoList->addItem(QString::fromStdString(current.getFact()));
     }
 }
 
-void MainWindow::connected()
-{
+void MainWindow::connected(){
+
     int id = getIdFromSelected();
     if(PC){
         vector<cScientist> list = computerD.persConnectedToComp(id);
@@ -175,8 +172,7 @@ void MainWindow::connected()
             ui->compConList->addItem(QString::fromStdString(list[i].getName()));
         }
     }
-    else
-    {
+    else{
         vector<Computer> list = personD.compsConnectedToPerson(id);
         for(unsigned int i = 0; i < list.size();i++){
             ui->compConList->addItem(QString::fromStdString(list[i].getName()));
@@ -192,6 +188,7 @@ void MainWindow::switchLists()
     ui->compConList->clear();
     startingList();
     ui->searchName->clear();
+
     if(PC){
         ui->searchName->setPlaceholderText("Filter by name, year or type...");
         ui->add->setText("Add computer");
@@ -200,7 +197,6 @@ void MainWindow::switchLists()
         ui->connectedLabel->setText("Scientists connected:");
         ui->infoList->setHidden(1);
         ui->factLabel->setHidden(1);
-
     }
     else{
         ui->searchName->setPlaceholderText("Filter by name, year of death/birth");
@@ -214,6 +210,7 @@ void MainWindow::switchLists()
 }
 
 int MainWindow::getIdFromSelected(){
+
     int row;
     int column;
     row = ui->listOfScientist->currentRow();
@@ -225,8 +222,8 @@ int MainWindow::getIdFromSelected(){
 }
 
 // Buttons ---------
-void MainWindow::on_listOfScientist_clicked()
-{
+void MainWindow::on_listOfScientist_clicked(){
+
     ui->compConList->clear();
     ui->edit->setEnabled(true);
     ui->delete_2->setEnabled(true);
@@ -236,30 +233,30 @@ void MainWindow::on_listOfScientist_clicked()
     ui->label_id->setText("ID: " + id);
 }
 
-void MainWindow::on_searchName_textChanged()
-{
-        if(PC){
-            string input = ui->searchName->text().toStdString();
-            vector<Computer> list = computerD.searchByName(input);
-            if(input == ""){
-                startingList();
-                return;
-            }
-            displayListComputers(list);
+void MainWindow::on_searchName_textChanged(){
+
+    if(PC){
+        string input = ui->searchName->text().toStdString();
+        vector<Computer> list = computerD.searchByName(input);
+        if(input == ""){
+            startingList();
+            return;
         }
-        else{
-            string input = ui->searchName->text().toStdString();
-            vector<cScientist> list = personD.searchByName(input);
-            if(input == ""){
-                startingList();
-                return;
-            }
-            displayListPersons(list);
+        displayListComputers(list);
+    }
+    else{
+        string input = ui->searchName->text().toStdString();
+        vector<cScientist> list = personD.searchByName(input);
+        if(input == ""){
+            startingList();
+            return;
         }
+        displayListPersons(list);
+    }
 }
 
-void MainWindow::on_scientistButton_clicked()
-{
+void MainWindow::on_scientistButton_clicked(){
+
     if(PC){
         PC = 0;
         switchLists();
@@ -269,8 +266,8 @@ void MainWindow::on_scientistButton_clicked()
     }
 }
 
-void MainWindow::on_computerButton_clicked()
-{
+void MainWindow::on_computerButton_clicked(){
+
     if(PC){
         return;
     }
@@ -280,8 +277,8 @@ void MainWindow::on_computerButton_clicked()
     }
 }
 
-void MainWindow::on_edit_clicked()
-{
+void MainWindow::on_edit_clicked(){
+
     QList<QModelIndex> selectedRows = ui->listOfScientist->selectionModel()->selectedRows();
     if (selectedRows.size() > 0) {
         QString id = QString::number(getIdFromSelected());
@@ -299,8 +296,8 @@ void MainWindow::on_edit_clicked()
     }
 }
 
-void MainWindow::on_delete_2_clicked()
-{
+void MainWindow::on_delete_2_clicked(){
+
     QList<QModelIndex> selectedRows = ui->listOfScientist->selectionModel()->selectedRows();
     if (selectedRows.size() > 0) {
         int id = getIdFromSelected();
@@ -314,48 +311,49 @@ void MainWindow::on_delete_2_clicked()
         ui->compConList->clear();
     }
 }
-void MainWindow::on_trash_clicked()
-{
+
+void MainWindow::on_trash_clicked(){
+
     Trash bin;
     bin.exec();
-    if(bin.close()){
+    if(bin.close())
         startingList();
-    }
 }
 
-void MainWindow::on_actionGettingStarted_triggered()
-{
+void MainWindow::on_actionGettingStarted_triggered(){
+
     QString GetStarted = "https://github.com/gunnidg/famCS3.0/wiki";
     QDesktopServices::openUrl(QUrl(GetStarted));
 }
 
-void MainWindow::on_actionAbout_triggered()
-{
+void MainWindow::on_actionAbout_triggered(){
+
     info about;
     about.exec();
 }
 
-void MainWindow::on_add_clicked()
-{
+void MainWindow::on_add_clicked(){
+
     if(!PC){
         add addToList;
         addToList.exec();
-    } else {
+    }
+    else {
         addComputer addToList;
         addToList.exec();
     }
     startingList();
 }
 
-void MainWindow::on_actionNewScientist_triggered()
-{
+void MainWindow::on_actionNewScientist_triggered(){
+
     add addToList;
     addToList.exec();
     startingList();
 }
 
-void MainWindow::on_actionNewComputer_triggered()
-{
+void MainWindow::on_actionNewComputer_triggered(){
+
     addComputer addToList;
     addToList.exec();
     startingList();
