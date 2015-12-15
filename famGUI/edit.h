@@ -49,7 +49,7 @@ private:
     bool checkYear(QString year); //Is true if year contains letter
     int currentYear(); //Gives current year
     bool maxYear(int yearB, int yearD); //Is true if input year is greater then current year
-    bool yearCompareson(int yearB, int yearD); //Gives error if year is invalid in compareson to each other
+    bool yearComparison(int yearB, int yearD); //Gives error if year is invalid in compareson to each other
 
     //Make changes
     void executeChanges(); //Main controller for commiting changes
@@ -57,10 +57,10 @@ private:
     void changeGender(); //If gender has been changed then it's saved
     void changeYob(); //If year of birth has been changed then it's saved
     void changeYod(); //If year of death has been changed then it's saved
-    void changeFact();
+    void changeFact(); //If fact has been changed then it's saved
 
     //List connections:
-    void connections();
+    void connections(); //Shows current connections and current connections that you can add
 
     //Quit:
     void quit();

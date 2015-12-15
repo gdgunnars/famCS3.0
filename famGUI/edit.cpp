@@ -11,33 +11,34 @@ edit::edit(const int& id,QWidget *parent) :
     ui->addButton->setDisabled(1);
     getObject();
 }
-edit::~edit()
-{
+edit::~edit(){
+
     delete ui;
 }
 
-void edit::getObject()
-{
+void edit::getObject(){
+
      currentPerson = personD.getPerson(currentId);
      showInfo();
 }
 
-void edit::showInfo()
-{
+void edit::showInfo(){
+
     showCurrentValues();
     connections();
 }
 
-void edit::showCurrentValues()
-{
+void edit::showCurrentValues(){
+
     ui->lineName->setPlaceholderText(QString::fromStdString(currentPerson.getName()));
     showGender();
     ui->lineYob->setPlaceholderText(QString::number(currentPerson.getYearBirth()));
     showYod();
     ui->lineFact->setPlaceholderText(QString::fromStdString(currentPerson.getFact()));
 }
-void edit::showGender()
-{
+
+void edit::showGender(){
+
     char gender = currentPerson.getSex();
     if(gender == 'F' || gender == 'f'){
         ui->femaleButton->setChecked(1);
@@ -49,8 +50,8 @@ void edit::showGender()
     }
 }
 
-void edit::showYod()
-{
+void edit::showYod(){
+
     int yod = currentPerson.getYearDeath();
     if(yod == 0){
         ui->checkIfAlive->setChecked(1);
@@ -60,15 +61,15 @@ void edit::showYod()
         ui->lineYod->setPlaceholderText(QString::number(currentPerson.getYearDeath()));
     }
 }
-void edit::clearError()
-{
+void edit::clearError(){
+
     ui->errorName->clear();
     ui->errorYob->clear();
     ui->errorYod->clear();
 }
 
-bool edit::checkForErrors()
-{
+bool edit::checkForErrors(){
+
     bool error = false;
     error = nameError();
     if(error == true){
@@ -78,8 +79,8 @@ bool edit::checkForErrors()
     return error;
 }
 
-bool edit::nameError()
-{
+bool edit::nameError(){
+
     bool error = false;
     string name = ui->lineName->text().toStdString();
 
@@ -92,8 +93,8 @@ bool edit::nameError()
     return error;
 }
 
-bool edit::yearError()
-{
+bool edit::yearError(){
+
     bool error = false;
 
     error = checkYear(ui->lineYob->text());
@@ -116,14 +117,14 @@ bool edit::yearError()
     }
 
       if(!(ui->checkIfAlive->isChecked())){
-        error = yearCompareson(yearB, yearD);
+        error = yearComparison(yearB, yearD);
     }
 
     return error;
 }
 
-bool edit::checkYear(QString year)
-{
+bool edit::checkYear(QString year){
+
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
         if(isalpha(ye[i])){
@@ -132,12 +133,16 @@ bool edit::checkYear(QString year)
     }
     return false;
 }
+
 int edit::currentYear(){
+
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
 }
+
 bool edit::maxYear(int yearB, int yearD){
+
     bool error = false;
 
     if ((yearB - currentYear()) > 0){
@@ -152,7 +157,8 @@ bool edit::maxYear(int yearB, int yearD){
     return error;
 }
 
-bool edit::yearCompareson(int yearB, int yearD){
+bool edit::yearComparison(int yearB, int yearD){
+
     bool error = false;
 
     QString yearBi = ui->lineYob->text();
@@ -179,8 +185,8 @@ bool edit::yearCompareson(int yearB, int yearD){
     return error;
 }
 
-void edit::executeChanges()
-{
+void edit::executeChanges(){
+
     changeName();
     changeGender();
     changeYob();
@@ -189,8 +195,8 @@ void edit::executeChanges()
     quit();
 }
 
-void edit::changeName()
-{
+void edit::changeName(){
+
     QString name = ui->lineName->text();
 
     if(name.isEmpty()){
@@ -201,8 +207,8 @@ void edit::changeName()
     }
 }
 
-void edit::changeGender()
-{
+void edit::changeGender(){
+
     if(ui->femaleButton->isChecked() && male == true){
         personD.editPerson(currentId,"F",3);
     }
@@ -213,8 +219,8 @@ void edit::changeGender()
         return;
 }
 
-void edit::changeYob()
-{
+void edit::changeYob(){
+
     QString year = ui->lineYob->text();
     if(year.isEmpty()){
         return;
@@ -224,29 +230,25 @@ void edit::changeYob()
     }
 }
 
-void edit::changeYod()
-{
+void edit::changeYod(){
+
    QString year = ui->lineYod->text();
-   if(ui->checkIfAlive->isChecked() && currentPerson.getYearDeath() == 0)
-   {
+   if(ui->checkIfAlive->isChecked() && currentPerson.getYearDeath() == 0){
        return;
    }
-   else if(ui->checkIfAlive->isChecked())
-   {
+   else if(ui->checkIfAlive->isChecked()){
        personD.editPerson(currentId,"0",5);
    }
-   else if(!(ui->checkIfAlive->isChecked()) && year.isEmpty())
-   {
+   else if(!(ui->checkIfAlive->isChecked()) && year.isEmpty()){
       return;
    }
-   else
-   {
+   else{
       personD.editPerson(currentId,year,5);
    }
 }
 
-void edit::changeFact()
-{
+void edit::changeFact(){
+
     QString fact = ui->lineFact->text();
     if(fact.isEmpty()){
         return;
@@ -256,8 +258,8 @@ void edit::changeFact()
     }
 }
 
-void edit::connections()
-{
+void edit::connections(){
+
     ui->listConnected->clear();
     ui->listNotConnected->clear();
 
@@ -271,13 +273,12 @@ void edit::connections()
     }
 }
 
-void edit::quit()
-{
+void edit::quit(){
+
     close();
 }
 
-void edit::on_updateButton_clicked()
-{
+void edit::on_updateButton_clicked(){
     clearError();
     bool error = checkForErrors();
     if(error == false){
@@ -286,20 +287,20 @@ void edit::on_updateButton_clicked()
     else
         return;
 }
-void edit::on_listConnected_clicked()
-{
+void edit::on_listConnected_clicked(){
+
     ui->deleteButton->setEnabled(1);
     ui->addButton->setDisabled(1);
 }
 
-void edit::on_listNotConnected_clicked()
-{
+void edit::on_listNotConnected_clicked(){
+
     ui->deleteButton->setDisabled(1);
     ui->addButton->setEnabled(1);
 }
 
-void edit::on_deleteButton_clicked()
-{
+void edit::on_deleteButton_clicked(){
+
     int index = ui->listConnected->currentRow();
     int id = con[index].getId();
 
@@ -307,8 +308,8 @@ void edit::on_deleteButton_clicked()
     connections();
 }
 
-void edit::on_addButton_clicked()
-{
+void edit::on_addButton_clicked(){
+
     int index = ui->listNotConnected->currentRow();
     int id = notCon[index].getId();
 

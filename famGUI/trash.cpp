@@ -9,12 +9,13 @@ Trash::Trash(QWidget *parent) :
     getErased();
 }
 
-Trash::~Trash()
-{
+Trash::~Trash(){
+
     delete ui;
 }
 
 void Trash::getErased(){
+
     ui->person_listWidget->clear();
     ui->computer_listWidget->clear();
     currentPersonVector = personD.listErased();
@@ -29,8 +30,8 @@ void Trash::getErased(){
     }
 }
 
-void Trash::on_pushButton_clicked()
-{
+void Trash::on_pushButton_clicked(){
+
     if(ui->person_listWidget->currentRow() >= 0){
         int rowId = ui->person_listWidget->currentRow();
         int id = currentPersonVector[rowId].getId();
@@ -39,8 +40,8 @@ void Trash::on_pushButton_clicked()
     }
 }
 
-void Trash::on_pushButton_2_clicked()
-{
+void Trash::on_pushButton_2_clicked(){
+
     if(ui->computer_listWidget->currentRow() >= 0){
         int rowId = ui->computer_listWidget->currentRow();
         int id = currentComputerVector[rowId].getId();
