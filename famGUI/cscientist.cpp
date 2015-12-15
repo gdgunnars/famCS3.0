@@ -42,23 +42,3 @@ string cScientist::getFact()const{
 
     return funFact;
 }
-
-/*void cScientist::setName(const string& newName){
-    name = newName;
-}
-
-void cScientist::setSex(const char& newSex){
-    sex = newSex;
-}
-
-void cScientist::setYearBirth(const int& newyear){
-    yearOfBirth = newyear;
-}
-
-void cScientist::setYearDeath(const int& newyear){
-    yearOfDeath = newyear;
-}
-
-void cScientist::setFact(const string& newString){
-    funFact = newString;
-}*/
