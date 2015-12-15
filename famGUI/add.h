@@ -26,12 +26,16 @@ private:
     computerDomain computerD;
 
     //Check for errors
-    void clearError();
-    bool checkForErrors();
-    bool nameError();
-    bool yearError();
-    bool checkYear(QString year);
-    int currentYear();
+    void clearError(); //Clears all former errors
+    bool checkForErrors(); //Main controller to start all error check
+    bool nameError(); //Is true if name contains number
+    bool yearError(); //Main controller for error check in year
+    bool checkYear(QString year); //Is true if year contains letter
+    int currentYear(); //Gives current year
+    bool maxYear(int yearB, int yearD); //Is true if input year is greater then current year
+    bool yearComparison(int yearB, int yearD); //Gives error if year is invalid in compareson to each other
+
+
 
 };
 
