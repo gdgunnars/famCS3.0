@@ -110,22 +110,22 @@ bool editComputer::maxYear(int yearB){
     return error;
 }
 
-bool editComputer::typeError(){
-
-    string type = ui->lineType->text().toStdString();
-    for(unsigned int i = 0; i < type.length(); i++){
-        if(isalpha(type[i])){
-            return true;
-        }
-    }
-    return false;
-}
-
 int editComputer::currentYear(){
 
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
+}
+
+bool editComputer::typeError(){
+
+    string type = ui->lineType->text().toStdString();
+    for(unsigned int i = 0; i < type.length(); i++){
+        if(isdigit(type[i])){
+            return true;
+        }
+    }
+    return false;
 }
 
 void editComputer::executeChanges(){
