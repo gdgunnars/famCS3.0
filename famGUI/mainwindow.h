@@ -51,6 +51,10 @@ private slots:
 
     void on_add_clicked();
 
+    void on_actionNewScientist_triggered();
+
+    void on_actionNewComputer_triggered();
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;

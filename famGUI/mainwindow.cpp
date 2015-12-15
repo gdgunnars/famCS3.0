@@ -346,3 +346,17 @@ void MainWindow::on_add_clicked()
     }
     startingList();
 }
+
+void MainWindow::on_actionNewScientist_triggered()
+{
+    add addToList;
+    addToList.exec();
+    startingList();
+}
+
+void MainWindow::on_actionNewComputer_triggered()
+{
+    addComputer addToList;
+    addToList.exec();
+    startingList();
+}
