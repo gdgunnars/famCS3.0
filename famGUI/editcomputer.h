@@ -46,19 +46,19 @@ private:
     bool checkForErrors(); //Main controller for errorcheck
     bool yearError(); //Main controller for errorcheck for year
     bool checkYear(const QString& year); //Is ture if year contains letter
-    bool maxYear(int yearB);
-    bool typeError();
-    int currentYear();
+    bool maxYear(int yearB); //Is true if year if higher then current year
+    int currentYear(); //Gives current year
+    bool typeError(); //Is true if type cointains number
 
     //Make changes
-    void executeChanges();
-    void changeName();
-    void changeBuildYear();
-    void changeType();
-    void changeBuilt();
+    void executeChanges(); //Main controller for commiting changes
+    void changeName(); //If new name is input then it's saved
+    void changeBuildYear(); //If new building year is input then it's saved
+    void changeType(); //If new type is input then it's saved
+    void changeBuilt(); //If built/not built is changed then it's saved
 
     //List connections:
-    void connections();
+    void connections(); //Shows current connections and current connections that you can add
 
     //Quit:
     void quit();
