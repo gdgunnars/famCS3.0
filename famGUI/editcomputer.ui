@@ -128,14 +128,14 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="deleteButton">
        <property name="text">
         <string>Delete connection</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="addButton">
        <property name="text">
         <string>Add connection</string>
        </property>
