@@ -63,18 +63,10 @@ bool addComputer::yearError(){
         ui->errorYear->setText("Year cannot include letters");
         return error;
     }
-    error = checkYear(ui->lineEdit_buildYear->text());
 
     int yearB = ui->lineEdit_buildYear->text().toInt();
 
-    error = maxYear(yearB, yearD);
-    if (error == true){
-        return error;
-    }
-
-     if(!(ui->checkBox_deceaced->isChecked())){
-        error = yearComparison(yearB, yearD);
-    }
+    error = maxYear(yearB);
 
     return error;
 }
@@ -96,18 +88,14 @@ int addComputer::currentYear(){
     return (now->tm_year + 1900);
 }
 
-bool addComputer::maxYear(int yearB, int yearD){
+bool addComputer::maxYear(int yearB){
     bool error = false;
 
     if ((yearB - currentYear()) > 0){
         error = true;
-        ui->errorYob->setText("Invalid year of birth");
+        ui->errorYob->setText("Invalid build year");
     }
 
-    if (yearD - currentYear() > 0){
-        error = true;
-        ui->errorYod->setText("Invalid year of death");
-    }
     return error;
 }
 
