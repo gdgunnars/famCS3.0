@@ -337,7 +337,12 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_add_clicked()
 {
-    add addToList;
-    addToList.exec();
+    if(!PC){
+        add addToList;
+        addToList.exec();
+    } else {
+        addComputer addToList;
+        addToList.exec();
+    }
     startingList();
 }

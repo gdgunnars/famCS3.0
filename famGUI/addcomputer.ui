@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
+    <width>400</width>
     <height>373</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
+    <width>400</width>
     <height>0</height>
    </size>
   </property>
@@ -26,6 +26,13 @@
       <widget class="QLabel" name="labelName">
        <property name="text">
         <string>Name</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="errorName">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -47,6 +54,13 @@
       <widget class="QCheckBox" name="checkBox_buildYear">
        <property name="text">
         <string>Was not built</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="errorYear">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -84,7 +98,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QListWidget" name="listAllPersons">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -104,7 +118,7 @@
   <connection>
    <sender>checkBox</sender>
    <signal>clicked(bool)</signal>
-   <receiver>listWidget</receiver>
+   <receiver>listAllPersons</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

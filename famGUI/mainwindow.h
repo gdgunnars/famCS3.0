@@ -16,6 +16,7 @@
 #include "Domain/computerdomain.h"
 #include "info.h"
 #include "add.h"
+#include "addcomputer.h"
 
 namespace Ui {
 class MainWindow;
