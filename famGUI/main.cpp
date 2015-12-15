@@ -3,8 +3,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
+
     database db;
     QApplication a(argc, argv);
     MainWindow w;

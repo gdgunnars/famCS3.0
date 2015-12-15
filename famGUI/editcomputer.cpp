@@ -37,12 +37,10 @@ void editComputer::showCurrentValues(){
 
 void editComputer::showYearBuilt(){
 
-    if(currentComputer.getYear() == 0){
+    if(currentComputer.getYear() == 0)
         ui->lineYear->setPlaceholderText("Not built");
-    }
-    else{
+    else
         ui->lineYear->setPlaceholderText(QString::number(currentComputer.getYear()));
-    }
 }
 
 void editComputer::showIfBuilt(){
@@ -65,9 +63,8 @@ bool editComputer::checkForErrors(){
 
     bool error = false;
     error = yearError();
-    if(error == true){
+    if(error == true)
         return error;
-    }
     error = typeError();
     return error;
 }
@@ -92,9 +89,8 @@ bool editComputer::checkYear(const QString& year){
 
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
-        if(isalpha(ye[i])){
+        if(isalpha(ye[i]))
             return true;
-        }
     }
     return false;
 }
@@ -118,6 +114,7 @@ int editComputer::currentYear(){
 }
 
 bool editComputer::typeError(){
+
     string type = ui->lineType->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isdigit(type[i])){
@@ -141,45 +138,37 @@ void editComputer::changeName(){
 
     QString name = ui->lineName->text();
 
-    if(name.isEmpty()){
+    if(name.isEmpty())
         return;
-    }
-    else{
+    else
         computerD.editComputer(currentId,name,2);
-    }
 }
 
 void editComputer::changeBuildYear(){
 
     QString year = ui->lineYear->text();
-    if(year.isEmpty()){
+    if(year.isEmpty())
         return;
-    }
-    else{
+    else
         computerD.editComputer(currentId,year,3);
-    }
 }
 
 void editComputer::changeType(){
 
     QString type = ui->lineType->text();
 
-    if(type.isEmpty()){
+    if(type.isEmpty())
         return;
-    }
-    else{
+    else
         computerD.editComputer(currentId,type,4);
-    }
 }
 
 void editComputer::changeBuilt(){
 
-    if(ui->wasNotBuilt->isChecked() && built == 1){
+    if(ui->wasNotBuilt->isChecked() && built == 1)
         computerD.editComputer(currentId,"0",5);
-    }
-    else if (!(ui->wasNotBuilt->isChecked()) && built == 0){
+    else if (!(ui->wasNotBuilt->isChecked()) && built == 0)
         computerD.editComputer(currentId,"1",5);
-    }
     else
         return;
 }
@@ -208,9 +197,8 @@ void editComputer::on_updateButton_clicked(){
 
     clearError();
     bool error = checkForErrors();
-    if(error == false){
+    if(error == false)
         executeChanges();
-    }
     else
         return;
 }

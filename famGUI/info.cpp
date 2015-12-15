@@ -8,7 +8,7 @@ info::info(QWidget *parent) :
     ui->setupUi(this);
 }
 
-info::~info()
-{
+info::~info(){
+
     delete ui;
 }
