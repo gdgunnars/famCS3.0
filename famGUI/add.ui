@@ -28,7 +28,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="QLineEdit" name="lineEdit_name"/>
    </item>
    <item>
     <widget class="QLabel" name="labelGender">
@@ -77,7 +77,7 @@
      <item>
       <widget class="QCheckBox" name="checkBox_deceaced">
        <property name="text">
-        <string>Is no deceased</string>
+        <string>Is not deceased</string>
        </property>
       </widget>
      </item>
@@ -104,7 +104,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QListWidget" name="listWidgetComputers">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -122,22 +122,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>checkBoxConnectCPU</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>listWidget</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>306</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>93</x>
-     <y>333</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>checkBox_deceaced</sender>
    <signal>clicked(bool)</signal>
    <receiver>lineEdit_2</receiver>
@@ -150,6 +134,22 @@
     <hint type="destinationlabel">
      <x>310</x>
      <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxConnectCPU</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>listWidgetComputers</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>93</x>
+     <y>306</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>93</x>
+     <y>333</y>
     </hint>
    </hints>
   </connection>
