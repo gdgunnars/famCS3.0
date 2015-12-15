@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Add Computer</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_name">
@@ -115,7 +119,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>checkBoxConnectPers</sender>
