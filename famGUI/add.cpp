@@ -33,9 +33,8 @@ bool add::checkForErrors(){
 
     bool error = false;
     error = nameError();
-    if(error == true){
+    if(error == true)
         return error;
-    }
     error = yearError();
     return error;
 }
@@ -73,13 +72,11 @@ bool add::yearError(){
     int yearD = ui->lineEdit_yod->text().toInt();
 
     error = maxYear(yearB, yearD);
-    if (error == true){
+    if (error == true)
         return error;
-    }
 
-      if(!(ui->checkBox_deceaced->isChecked())){
+    if(!(ui->checkBox_deceaced->isChecked()))
         error = yearComparison(yearB, yearD);
-    }
 
     return error;
 }
@@ -88,9 +85,8 @@ bool add::checkYear(QString year){
 
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
-        if(isalpha(ye[i])){
+        if(isalpha(ye[i]))
             return true;
-        }
     }
     return false;
 }
@@ -132,12 +128,14 @@ void add::on_pushButtonAddPerson_clicked(){
     if(!checkForErrors()){
         string name = ui->lineEdit_name->text().toStdString();
         char gender;
+
         if(ui->radioButtonFemale->isChecked())
             gender = 'F';
         else
             gender = 'M';
         int YoB = ui->lineEdit_yob->text().toInt();
         int YoD;
+
         if(ui->checkBox_deceaced->isChecked())
             YoD = 0;
         else

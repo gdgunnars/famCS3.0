@@ -1,7 +1,7 @@
 #include "database.h"
 
-database::database()
-{
+database::database(){
+
   db = QSqlDatabase::addDatabase("QSQLITE");
   QString databaseName = "../famCS.db";
   db.setDatabaseName(databaseName);
@@ -39,5 +39,6 @@ database::database()
 }
 
 void database::close(){
+
   db.close();
 }

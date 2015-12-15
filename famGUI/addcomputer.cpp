@@ -9,8 +9,8 @@ addComputer::addComputer(QWidget *parent) :
     fillPersList();
 }
 
-addComputer::~addComputer()
-{
+addComputer::~addComputer(){
+
     delete ui;
 }
 
@@ -32,9 +32,8 @@ bool addComputer::checkForErrors(){
 
     bool error = false;
     error = yearError();
-    if(error == true){
+    if(error == true)
         return error;
-    }
     error = typeError();
     return error;
 }
@@ -60,31 +59,32 @@ bool addComputer::checkYear(QString year){
 
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
-        if(isalpha(ye[i])){
+        if(isalpha(ye[i]))
             return true;
-        }
     }
     return false;
 }
 
 int addComputer::currentYear(){
+
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
 }
 
 bool addComputer::maxYear(int yearB){
+
     bool error = false;
 
     if ((yearB - currentYear()) > 0){
         error = true;
         ui->errorYear->setText("Invalid build year");
     }
-
     return error;
 }
 
 bool addComputer::typeError(){
+
     string type = ui->lineEdit_type->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isdigit(type[i])){
@@ -95,20 +95,23 @@ bool addComputer::typeError(){
     return false;
 }
 
-void addComputer::on_pushButton_addComputer_clicked()
-{
+void addComputer::on_pushButton_addComputer_clicked(){
+
     clearError();
     if(!checkForErrors()){
        string name = ui->lineEdit_name->text().toStdString();
        bool wasItBuilt;
        int buildYear;
+
        if(ui->checkBox_buildYear->isChecked()){
            wasItBuilt = false;
            buildYear = 0;
-       } else {
+       }
+       else {
            wasItBuilt = true;
            buildYear = ui->lineEdit_buildYear->text().toInt();
        }
+
        string type = ui->lineEdit_type->text().toStdString();
 
        int newComputerId = computerD.addComputer(name, buildYear, type, wasItBuilt);
