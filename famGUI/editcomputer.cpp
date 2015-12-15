@@ -10,33 +10,33 @@ editComputer::editComputer(const int& id, QWidget *parent) :
     getObject();
 }
 
-editComputer::~editComputer()
-{
+editComputer::~editComputer(){
+
     delete ui;
 }
 
-void editComputer::getObject()
-{
+void editComputer::getObject(){
+
     currentComputer = computerD.getComputer(currentId);
     showInfo();
 }
 
-void editComputer::showInfo()
-{
+void editComputer::showInfo(){
+
     showCurrentValues();
     connections();
 }
 
-void editComputer::showCurrentValues()
-{
+void editComputer::showCurrentValues(){
+
     ui->lineName->setPlaceholderText(QString::fromStdString(currentComputer.getName()));
     showYearBuilt();
     ui->lineType->setPlaceholderText(QString::fromStdString(currentComputer.getType()));
     showIfBuilt();
 }
 
-void editComputer::showYearBuilt()
-{
+void editComputer::showYearBuilt(){
+
     if(currentComputer.getYear() == 0){
         ui->lineYear->setPlaceholderText("Not built");
     }
@@ -45,8 +45,8 @@ void editComputer::showYearBuilt()
     }
 }
 
-void editComputer::showIfBuilt()
-{
+void editComputer::showIfBuilt(){
+
     if(currentComputer.getBuilt() == 0){
         ui->wasNotBuilt->setChecked(1);
         built = 0;
@@ -55,15 +55,15 @@ void editComputer::showIfBuilt()
         built = 1;
 }
 
-void editComputer::clearError()
-{
+void editComputer::clearError(){
+
     ui->errorName->clear();
     ui->errorYear->clear();
     ui->errorType->clear();
 }
 
-bool editComputer::checkForErrors()
-{
+bool editComputer::checkForErrors(){
+
     bool error = false;
     error = yearError();
     if(error == true){
@@ -73,8 +73,8 @@ bool editComputer::checkForErrors()
     return error;
 }
 
-bool editComputer::yearError()
-{
+bool editComputer::yearError(){
+
     bool error = false;
 
     error = checkYear(ui->lineYear->text());
@@ -83,7 +83,6 @@ bool editComputer::yearError()
         return error;
     }
 
-    QString year = ui->lineYear->text();
     int yearB = ui->lineYear->text().toInt();
 
     if ((yearB - currentYear()) > 0){
@@ -94,8 +93,8 @@ bool editComputer::yearError()
     return error;
 }
 
-bool editComputer::checkYear(const QString& year)
-{
+bool editComputer::checkYear(const QString& year){
+
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
         if(isalpha(ye[i])){
@@ -105,8 +104,8 @@ bool editComputer::checkYear(const QString& year)
     return false;
 }
 
-bool editComputer::typeError()
-{
+bool editComputer::typeError(){
+
     string type = ui->lineType->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isalpha(type[i])){
@@ -116,15 +115,15 @@ bool editComputer::typeError()
     return false;
 }
 
-int editComputer::currentYear()
-{
+int editComputer::currentYear(){
+
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
 }
 
-void editComputer::executeChanges()
-{
+void editComputer::executeChanges(){
+
     changeName();
     changeBuildYear();
     changeType();
@@ -132,8 +131,8 @@ void editComputer::executeChanges()
     quit();
 }
 
-void editComputer::changeName()
-{
+void editComputer::changeName(){
+
     QString name = ui->lineName->text();
 
     if(name.isEmpty()){
@@ -144,8 +143,8 @@ void editComputer::changeName()
     }
 }
 
-void editComputer::changeBuildYear()
-{
+void editComputer::changeBuildYear(){
+
     QString year = ui->lineYear->text();
     if(year.isEmpty()){
         return;
@@ -155,8 +154,8 @@ void editComputer::changeBuildYear()
     }
 }
 
-void editComputer::changeType()
-{
+void editComputer::changeType(){
+
     QString type = ui->lineType->text();
 
     if(type.isEmpty()){
@@ -167,8 +166,8 @@ void editComputer::changeType()
     }
 }
 
-void editComputer::changeBuilt()
-{
+void editComputer::changeBuilt(){
+
     if(ui->wasNotBuilt->isChecked() && built == 1){
         computerD.editComputer(currentId,"0",5);
     }
@@ -179,8 +178,8 @@ void editComputer::changeBuilt()
         return;
 }
 
-void editComputer::connections()
-{
+void editComputer::connections(){
+
     ui->listConnected->clear();
     ui->listNotConnected->clear();
 
@@ -194,13 +193,13 @@ void editComputer::connections()
     }
 }
 
-void editComputer::quit()
-{
+void editComputer::quit(){
+
     close();
 }
 
-void editComputer::on_updateButton_clicked()
-{
+void editComputer::on_updateButton_clicked(){
+
     clearError();
     bool error = checkForErrors();
     if(error == false){
@@ -210,20 +209,20 @@ void editComputer::on_updateButton_clicked()
         return;
 }
 
-void editComputer::on_listConnected_clicked()
-{
+void editComputer::on_listConnected_clicked(){
+
     ui->deleteButton->setEnabled(1);
     ui->addButton->setDisabled(1);
 }
 
-void editComputer::on_listNotConnected_clicked()
-{
+void editComputer::on_listNotConnected_clicked(){
+
     ui->deleteButton->setDisabled(1);
     ui->addButton->setEnabled(1);
 }
 
-void editComputer::on_deleteButton_clicked()
-{
+void editComputer::on_deleteButton_clicked(){
+
     int index = ui->listConnected->currentRow();
     int id = con[index].getId();
 
@@ -231,8 +230,8 @@ void editComputer::on_deleteButton_clicked()
     connections();
 }
 
-void editComputer::on_addButton_clicked()
-{
+void editComputer::on_addButton_clicked(){
+
     int index = ui->listNotConnected->currentRow();
     int id = notCon[index].getId();
 
