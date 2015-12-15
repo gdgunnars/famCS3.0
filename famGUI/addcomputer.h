@@ -19,7 +19,7 @@ public:
     ~addComputer();
 
 private slots:
-    void on_pushButton_addComputer_clicked();
+    void on_pushButton_addComputer_clicked(); //Run errorcheck if there are none new computer is added
 
 private:
     Ui::addComputer *ui;
@@ -37,7 +37,7 @@ private:
     bool checkYear(QString year); //Is true if year contains letter
     int currentYear(); //Gives current year
     bool maxYear(int yearB); //Is true if input year is greater then current year
-    bool typeError();
+    bool typeError(); //Is true if input type contains numbers
 };
 
 #endif // ADDCOMPUTER_H

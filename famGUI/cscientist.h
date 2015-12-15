@@ -14,12 +14,12 @@ public:
     cScientist(const int& i, const string& nam,const char& se,const int& yearB,const int& yearD,const string& fact);
 
     //Get functions:
-    int getId()const;
-    string getName()const;
-    char getSex()const;
-    unsigned int getYearBirth()const;
-    unsigned int getYearDeath()const;
-    string getFact()const;
+    int getId()const; //Returns id
+    string getName()const; //Returns name
+    char getSex()const; //Returns gender
+    unsigned int getYearBirth()const; //Returns year of birth
+    unsigned int getYearDeath()const; //Returns year of death
+    string getFact()const; //Returns fact
 
 private:
     int id;

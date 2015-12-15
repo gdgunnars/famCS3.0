@@ -20,7 +20,7 @@ public:
     ~add();
 
 private slots:
-    void on_pushButtonAddPerson_clicked();
+    void on_pushButtonAddPerson_clicked();  //Run errorcheck if there are none new scientist is added
 
 private:
     Ui::add *ui;
@@ -37,8 +37,6 @@ private:
     int currentYear(); //Gives current year
     bool maxYear(int yearB, int yearD); //Is true if input year is greater then current year
     bool yearComparison(int yearB, int yearD); //Gives error if year is invalid in compareson to each other
-
-
 
 };
 

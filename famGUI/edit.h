@@ -20,15 +20,15 @@ public:
     ~edit();
 
 private slots:
-    void on_updateButton_clicked();
+    void on_updateButton_clicked(); //Run errorcheck if there are none changes are executed
 
-    void on_listConnected_clicked();
+    void on_listConnected_clicked(); //If choosen is from list connected delete buttom is enabled
 
-    void on_listNotConnected_clicked();
+    void on_listNotConnected_clicked(); //If choosen is from list not connected add buttom is enabled
 
-    void on_deleteButton_clicked();
+    void on_deleteButton_clicked(); //Deletes connection
 
-    void on_addButton_clicked();
+    void on_addButton_clicked(); //Adds connection
 
 private:
     Ui::edit *ui;
@@ -63,7 +63,7 @@ private:
     void connections(); //Shows current connections and current connections that you can add
 
     //Quit:
-    void quit();
+    void quit(); //Quits application
 
     personDomain personD;
     cScientist currentPerson;
