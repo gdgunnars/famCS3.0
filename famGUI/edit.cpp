@@ -108,8 +108,6 @@ bool edit::yearError()
         return error;
     }
 
-    QString yearBi = ui->lineYob->text();
-    QString yearDe = ui->lineYod->text();
     int yearB = ui->lineYob->text().toInt();
     int yearD = ui->lineYod->text().toInt();
 
@@ -126,28 +124,7 @@ bool edit::yearError()
     }
 
       if(!(ui->checkIfAlive->isChecked())){
-         if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
-            yearB = currentPerson.getYearBirth();
-            if ((yearD - yearB) < 0){
-                error = true;
-                ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-                return error;
-            }
-        }
-        else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
-             yearD = currentPerson.getYearDeath();
-             if((yearD-yearB) < 0){
-                 error = true;
-                 ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-                 return error;
-
-             }
-         }
-        else if((yearD - yearB) < 0){
-            error = true;
-            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-            return error;
-        }
+        error = yearCompareson(yearB, yearD);
     }
 
     return error;
@@ -167,6 +144,32 @@ bool edit::checkYear(QString year)
         }
     }
     return false;
+}
+bool edit::yearCompareson(int yearB, int yearD){
+    bool error = false;
+
+    QString yearBi = ui->lineYob->text();
+    QString yearDe = ui->lineYod->text();
+
+    if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
+       yearB = currentPerson.getYearBirth();
+       if ((yearD - yearB) < 0){
+           error = true;
+           ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+       }
+   }
+   else if(!(yearBi.isEmpty())&&(yearDe.isEmpty())){
+        yearD = currentPerson.getYearDeath();
+        if((yearD - yearB) < 0){
+            error = true;
+            ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+        }
+    }
+   else if((yearD - yearB) < 0){
+       error = true;
+       ui->errorYob->setText("Year of death invalid in comparison to year of birth");
+   }
+    return error;
 }
 
 void edit::executeChanges()

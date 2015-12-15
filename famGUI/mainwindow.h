@@ -48,6 +48,8 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void on_add_clicked();
+
 private:
     Ui::MainWindow *ui;
     personDomain personD;
