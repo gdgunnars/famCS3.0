@@ -29,13 +29,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="errorName">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>

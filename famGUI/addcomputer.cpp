@@ -24,9 +24,8 @@ void addComputer::fillPersList(){
 
 void addComputer::clearError(){
 
-    ui->errorName->clear();
     ui->errorYear->clear();
-    ui->errorYod->clear();
+    ui->errorType->clear();
 }
 
 bool addComputer::checkForErrors(){
