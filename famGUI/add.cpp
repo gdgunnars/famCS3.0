@@ -21,25 +21,14 @@ void add::fillComList(){
     }
 }
 
-
-
-void add::on_pushButtonAddPerson_clicked()
-{
-    string name = ui->lineEdit_name->text().toStdString();
-    char
-    if(ui->radioButtonFemale->isChecked())
-        personD.editPerson(currentId,"F",3);
-    personD.editPerson(currentId,"M",3);
-
-}
-void edit::clearError()
+void add::clearError()
 {
     ui->errorName->clear();
     ui->errorYob->clear();
     ui->errorYod->clear();
 }
 
-bool edit::checkForErrors()
+bool add::checkForErrors()
 {
     bool error = false;
     error = nameError();
@@ -50,10 +39,10 @@ bool edit::checkForErrors()
     return error;
 }
 
-bool edit::nameError()
+bool add::nameError()
 {
     bool error = false;
-    string name = ui->lineName->text().toStdString();
+    string name = ui->lineEdit_name->text().toStdString();
 
     for(unsigned int i = 0; i < name.length();i++){
         if(isdigit(name[i])){
@@ -64,37 +53,37 @@ bool edit::nameError()
     return error;
 }
 
-bool edit::yearError()
+bool add::yearError()
 {
     bool error = false;
 
-    error = checkYear(ui->lineYob->text());
+    error = checkYear(ui->lineEdit_yob->text());
     if(error == true){
         ui->errorYob->setText("Year cannot include letters");
         return error;
     }
-    error = checkYear(ui->lineYod->text());
+    error = checkYear(ui->lineEdit_yod->text());
     if(error == true){
         ui->errorYod->setText("Year cannot include letters");
         return error;
     }
 
-    int yearB = ui->lineYob->text().toInt();
-    int yearD = ui->lineYod->text().toInt();
+    int yearB = ui->lineEdit_yob->text().toInt();
+    int yearD = ui->lineEdit_yod->text().toInt();
 
     error = maxYear(yearB, yearD);
     if (error == true){
         return error;
     }
 
-      if(!(ui->checkIfAlive->isChecked())){
-        error = yearCompareson(yearB, yearD);
+      if(!(ui->checkBox_deceaced->isChecked())){
+        error = yearComparison(yearB, yearD);
     }
 
     return error;
 }
 
-bool edit::checkYear(QString year)
+bool add::checkYear(QString year)
 {
     string ye = year.toStdString();
     for(unsigned int i = 0; i < ye.length(); i++){
@@ -104,12 +93,12 @@ bool edit::checkYear(QString year)
     }
     return false;
 }
-int edit::currentYear(){
+int add::currentYear(){
     time_t t = time(0);
     struct tm * now = localtime( & t );
     return (now->tm_year + 1900);
 }
-bool edit::maxYear(int yearB, int yearD){
+bool add::maxYear(int yearB, int yearD){
     bool error = false;
 
     if ((yearB - currentYear()) > 0){
@@ -124,13 +113,13 @@ bool edit::maxYear(int yearB, int yearD){
     return error;
 }
 
-bool edit::yearCompareson(int yearB, int yearD){
+bool add::yearComparison(int yearB, int yearD){
     bool error = false;
 
-    QString yearBi = ui->lineYob->text();
-    QString yearDe = ui->lineYod->text();
+    QString yearBi = ui->lineEdit_yob->text();
+    QString yearDe = ui->lineEdit_yod->text();
 
-    if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
+/*    if ((yearBi.isEmpty())&&(!(yearDe.isEmpty()))){
        yearB = currentPerson.getYearBirth();
        if ((yearD - yearB) < 0){
            error = true;
@@ -147,7 +136,35 @@ bool edit::yearCompareson(int yearB, int yearD){
    else if((yearD - yearB) < 0){
        error = true;
        ui->errorYob->setText("Year of death invalid in comparison to year of birth");
-   }
+   }*/
     return error;
 }
 
+void add::on_pushButtonAddPerson_clicked()
+{
+    clearError();
+    if(!checkForErrors()){
+        string name = ui->lineEdit_name->text().toStdString();
+        char gender;
+        if(ui->radioButtonFemale->isChecked())
+            gender = 'F';
+        else
+            gender = 'M';
+        int YoB = ui->lineEdit_yob->text().toInt();
+        int YoD;
+        if(ui->checkBox_deceaced->isChecked())
+            YoD = 0;
+        else
+            YoD = ui->checkBox_deceaced->text().toInt();
+        string funFact = ui->lineEdit_funfact->text().toStdString();
+        int newPersonId = personD.addPerson(name, gender, YoB, YoD, funFact);
+
+        if(ui->checkBoxConnectCPU->isChecked()){
+           QList<QListWidgetItem *> cpuIDs = ui->listWidgetComputers->selectedItems();
+           for(unsigned int i = 0; i < cpuIDs.size(); i++){
+               personD.addConnection(newPersonId,allComp[ui->listWidgetComputers->row(cpuIDs.at(i))].getId());
+           }
+        }
+        close();
+    }
+}

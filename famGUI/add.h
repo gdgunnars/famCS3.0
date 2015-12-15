@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "Domain/computerdomain.h"
+#include "Domain/persondomain.h"
 
 namespace Ui {
 class add;
@@ -23,6 +24,7 @@ private slots:
 private:
     Ui::add *ui;
     vector<Computer> allComp;
+    personDomain personD;
     computerDomain computerD;
 
     //Check for errors

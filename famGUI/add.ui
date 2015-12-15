@@ -21,28 +21,46 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="labelName">
-     <property name="text">
-      <string>Name:</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_name">
+     <item>
+      <widget class="QLabel" name="labelName">
+       <property name="text">
+        <string>Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="errorName">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLineEdit" name="lineEdit_name"/>
    </item>
    <item>
-    <widget class="QLabel" name="labelGender">
-     <property name="text">
-      <string>Gender:</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_Gender">
+     <item>
+      <widget class="QLabel" name="labelGender">
+       <property name="text">
+        <string>Gender:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout_GenderInput">
      <item>
       <widget class="QRadioButton" name="radioButtonFemale">
        <property name="text">
         <string>Female</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -56,17 +74,28 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="labelYoB">
-     <property name="text">
-      <string>Year  of Birth</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_YOB">
+     <item>
+      <widget class="QLabel" name="labelYoB">
+       <property name="text">
+        <string>Year  of Birth</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="errorYob">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLineEdit" name="lineEdit_yob"/>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_YOD">
      <item>
       <widget class="QLabel" name="labelYod">
        <property name="text">
@@ -81,10 +110,20 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="errorYod">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineEdit_2"/>
+    <layout class="QHBoxLayout" name="horizontalLayoutYoD"/>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEdit_yod"/>
    </item>
    <item>
     <widget class="QLabel" name="labelFunFact">
@@ -94,7 +133,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineEdit_3"/>
+    <widget class="QLineEdit" name="lineEdit_funfact"/>
    </item>
    <item>
     <widget class="QCheckBox" name="checkBoxConnectCPU">
@@ -107,6 +146,9 @@
     <widget class="QListWidget" name="listWidgetComputers">
      <property name="enabled">
       <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
      </property>
     </widget>
    </item>
@@ -124,7 +166,7 @@
   <connection>
    <sender>checkBox_deceaced</sender>
    <signal>clicked(bool)</signal>
-   <receiver>lineEdit_2</receiver>
+   <receiver>lineEdit_yod</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
