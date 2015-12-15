@@ -444,9 +444,7 @@ selection-color: rgb(255, 0, 0);</string>
       <item>
        <widget class="QPushButton" name="add">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(43, 43, 43);
-color: rgb(249, 249, 249);
-font: 8pt &quot;Open Sans&quot;;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Add Scientist</string>
@@ -459,9 +457,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(43, 43, 43);
-color: rgb(249, 249, 249);
-font: 8pt &quot;Open Sans&quot;;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Edit Scientist</string>
@@ -471,9 +467,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
       <item>
        <widget class="QPushButton" name="delete_2">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(43, 43, 43);
-color: rgb(249, 249, 249);
-font: 8pt &quot;Open Sans&quot;;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Delete Scientist</string>
@@ -511,9 +505,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(43, 43, 43);
-color: rgb(249, 249, 249);
-font: 8pt &quot;Open Sans&quot;;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Trash</string>
@@ -530,7 +522,7 @@ font: 8pt &quot;Open Sans&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>740</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
