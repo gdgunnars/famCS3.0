@@ -111,7 +111,6 @@ bool editComputer::maxYear(int yearB){
 }
 
 bool editComputer::typeError(){
-
     string type = ui->lineType->text().toStdString();
     for(unsigned int i = 0; i < type.length(); i++){
         if(isalpha(type[i])){

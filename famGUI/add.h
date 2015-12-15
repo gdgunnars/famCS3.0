@@ -2,6 +2,7 @@
 #define ADD_H
 
 #include <QDialog>
+#include <ctime>
 #include "Domain/computerdomain.h"
 #include "Domain/persondomain.h"
 

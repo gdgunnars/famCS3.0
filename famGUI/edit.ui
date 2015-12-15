@@ -14,7 +14,7 @@
    <string>Edit Scientist</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="resources.qrc">
     <normaloff>:/icons/Images/famCSicon.png</normaloff>:/icons/Images/famCSicon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -148,7 +148,7 @@
      <item>
       <widget class="QLabel" name="labelFive">
        <property name="text">
-        <string>Fun fact</string>
+        <string>Fun fact </string>
        </property>
       </widget>
      </item>
@@ -212,7 +212,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>checkIfAlive</sender>
