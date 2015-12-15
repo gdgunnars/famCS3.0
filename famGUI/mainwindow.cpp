@@ -301,15 +301,18 @@ void MainWindow::on_edit_clicked()
 
 void MainWindow::on_delete_2_clicked()
 {
-    int id = getIdFromSelected();
-    if(!PC)
-        personD.deletePerson(id);
-    else
-        computerD.deleteComputer(id);
+    QList<QModelIndex> selectedRows = ui->listOfScientist->selectionModel()->selectedRows();
+    if (selectedRows.size() > 0) {
+        int id = getIdFromSelected();
+        if(!PC)
+            personD.deletePerson(id);
+        else
+            computerD.deleteComputer(id);
 
-    ui->listOfScientist->removeRow(ui->listOfScientist->currentRow());
-    ui->infoList->clear();
-    ui->compConList->clear();
+        ui->listOfScientist->removeRow(ui->listOfScientist->currentRow());
+        ui->infoList->clear();
+        ui->compConList->clear();
+    }
 }
 void MainWindow::on_trash_clicked()
 {
