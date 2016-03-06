@@ -8,8 +8,8 @@ The user can connect computers and scientists together. The program displays a l
 
 Designers
 
-Fjóla Baldursdóttir
-Gunnar Davíð Gunnarsson
-Helga Karlsdóttir
-Sigurður Guðmundsson
-Smári Björn Gunnarsson
+Fjóla Baldursdóttir,
+Gunnar Davíð Gunnarsson,
+Helga Karlsdóttir,
+Sigurður Guðmundsson,
+Smári Björn Gunnarsson,
